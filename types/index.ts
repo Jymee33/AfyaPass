@@ -83,3 +83,112 @@ export interface QrPayload {
   sig: string;              // HMAC signature validating issuer authenticity
   exp: number;              // Timestamp payload validity window
 }
+
+// --- Extended types for AfyaPass UI modules ---
+
+export interface VitalSigns {
+  id: string;
+  encounterId: string;
+  patientId: string;
+  recordedAt: string;
+  recordedBy: string;
+  bloodPressureSystolic?: number;
+  bloodPressureDiastolic?: number;
+  heartRate?: number;
+  temperature?: number; // Celsius
+  respiratoryRate?: number;
+  oxygenSaturation?: number;
+  weight?: number; // kg
+  height?: number; // cm
+}
+
+export interface Medication {
+  id: string;
+  patientId: string;
+  encounterId: string;
+  drugName: string;
+  dosage: string;
+  frequency: string;
+  route: 'Oral' | 'IV' | 'IM' | 'Topical' | 'Inhaled' | 'Other';
+  startDate: string;
+  endDate?: string;
+  prescribedBy: string;
+  facilityId: string;
+  status: 'Active' | 'Completed' | 'Discontinued' | 'On Hold';
+}
+
+export interface Diagnosis {
+  id: string;
+  patientId: string;
+  encounterId: string;
+  icdCode: string; // ICD-11
+  description: string;
+  type: 'Primary' | 'Secondary' | 'Differential';
+  status: 'Active' | 'Resolved' | 'Chronic';
+  diagnosedAt: string;
+  diagnosedBy: string;
+  facilityId: string;
+}
+
+export interface LabOrder {
+  id: string;
+  patientId: string;
+  encounterId?: string;
+  testName: string;
+  testCode: string;
+  orderedBy: string;
+  orderedAt: string;
+  facilityId: string;
+  status: 'Pending' | 'In Progress' | 'Completed' | 'Cancelled';
+  priority: 'Routine' | 'Urgent' | 'STAT';
+  results?: string;
+  resultDate?: string;
+  resultedBy?: string;
+  notes?: string;
+}
+
+export interface Referral {
+  id: string;
+  patientId: string;
+  sourceFacilityId: string;
+  targetFacilityId: string;
+  referredBy: string;
+  referralDate: string;
+  reason: string;
+  urgency: 'Routine' | 'Urgent' | 'Emergency';
+  status: 'Pending' | 'Accepted' | 'In Progress' | 'Completed' | 'Declined';
+  clinicalNotes?: string;
+  responseDate?: string;
+  respondedBy?: string;
+}
+
+export interface Allergy {
+  id: string;
+  patientId: string;
+  allergen: string;
+  reaction: string;
+  severity: 'Mild' | 'Moderate' | 'Severe';
+  recordedAt: string;
+  recordedBy: string;
+}
+
+export interface ActivityEvent {
+  id: string;
+  timestamp: string;
+  action: string;
+  description: string;
+  patientId?: string;
+  patientName?: string;
+  afyaPassId?: string;
+  facilityName: string;
+  actorName?: string;
+  actorRole?: Role;
+}
+
+export type NavigationItem = {
+  label: string;
+  href: string;
+  icon: string; // lucide icon name
+  children?: NavigationItem[];
+  requiredPermission?: keyof import('@/lib/rbac').AccessRule;
+};
