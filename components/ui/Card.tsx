@@ -17,8 +17,8 @@ export function Card({
 }: CardProps) {
   const variants = {
     default: 'card',
-    stat: 'bg-white rounded-card border border-border shadow-sm',
-    elevated: 'bg-white rounded-card-lg border border-border shadow-dropdown',
+    stat: 'bg-white rounded-card-lg border border-border/60 shadow-card',
+    elevated: 'bg-white rounded-card-xl border border-border/40 shadow-dropdown',
   };
 
   const paddings = {
@@ -33,7 +33,7 @@ export function Card({
       className={cn(
         variants[variant],
         paddings[padding],
-        hoverable && 'hover:shadow-card-hover transition-shadow duration-200',
+        hoverable && 'hover:shadow-card-hover transition-all duration-200',
         className
       )}
       {...props}
@@ -44,11 +44,11 @@ export function Card({
 }
 
 export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('flex flex-col space-y-1.5 pb-4', className)} {...props} />;
+  return <div className={cn('flex flex-col space-y-1 pb-5', className)} {...props} />;
 }
 
 export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={cn('text-lg font-semibold leading-none tracking-tight text-slate-900', className)} {...props} />;
+  return <h3 className={cn('font-display text-lg font-bold leading-none tracking-tight text-slate-900', className)} {...props} />;
 }
 
 export function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {

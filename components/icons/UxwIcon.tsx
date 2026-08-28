@@ -7,7 +7,8 @@ export interface UxwIconProps extends React.SVGAttributes<SVGElement> {
 
 /**
  * Base wrapper for UXWing SVG icons.
- * All icons accept className for Tailwind coloring via `fill-current` / `text-*`.
+ * Icons from uxwing.com — free for commercial use, no attribution required.
+ * Color via Tailwind `text-*` classes using fill="currentColor".
  */
 export function UxwIcon({
   children,
@@ -23,7 +24,7 @@ export function UxwIcon({
       width={size}
       height={size}
       fill="currentColor"
-      className={cn('shrink-0', className)}
+      className={cn('shrink-0 inline-block', className)}
       aria-hidden="true"
       {...props}
     >

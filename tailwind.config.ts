@@ -16,10 +16,22 @@ const config: Config = {
           400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
           800: '#115e59', 900: '#134e4a', 950: '#042f2e',
         },
+        medic: {
+          50: '#EFF6FF', 100: '#DBEAFE', 200: '#BFDBFE', 300: '#93C5FD',
+          400: '#60A5FA', 500: '#3B82F6', 600: '#2563EB', 700: '#1D4ED8',
+          800: '#1E40AF', 900: '#1E3A8A', 950: '#172554',
+        },
         county: { 50: '#ecfdf5', 600: '#059669', 700: '#047857' },
-        sidebar: { DEFAULT: '#0F172A', hover: '#1E293B', active: '#1E3A5F', border: '#1E293B', text: '#94A3B8', 'text-active': '#FFFFFF' },
-        surface: { DEFAULT: '#FFFFFF', secondary: '#F8FAFC', tertiary: '#F1F5F9' },
-        border: { DEFAULT: '#E2E8F0', light: '#F1F5F9' },
+        sidebar: {
+          DEFAULT: '#FFFFFF',
+          hover: '#F1F5F9',
+          active: '#EFF6FF',
+          border: '#E2E8F0',
+          text: '#64748B',
+          'text-active': '#2563EB',
+        },
+        surface: { DEFAULT: '#FFFFFF', secondary: '#F4F7FB', tertiary: '#EEF2F7' },
+        border: { DEFAULT: '#E8EDF3', light: '#F1F5F9' },
         success: {
           50: '#ECFDF5', 100: '#D1FAE5', 200: '#A7F3D0', 400: '#34D399',
           500: '#10B981', 600: '#059669', 700: '#047857', 800: '#065F46',
@@ -38,22 +50,27 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif']
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'page-title': ['1.5rem', { lineHeight: '2rem', fontWeight: '600' }],
-        'kpi': ['1.75rem', { lineHeight: '2.25rem', fontWeight: '700' }],
+        'page-title': ['1.625rem', { lineHeight: '2.125rem', fontWeight: '700' }],
+        'kpi': ['2rem', { lineHeight: '2.5rem', fontWeight: '700' }],
       },
       borderRadius: {
-        'card': '12px',
-        'card-lg': '16px',
+        'card': '16px',
+        'card-lg': '20px',
+        'card-xl': '24px',
         'pill': '9999px'
       },
       boxShadow: {
-        'card': '0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.02)',
-        'card-hover': '0 4px 12px rgba(0,0,0,0.08)',
-        'dropdown': '0 10px 30px rgba(0,0,0,0.1)',
-        'modal': '0 20px 60px rgba(0,0,0,0.15)'
+        'card': '0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04)',
+        'card-hover': '0 8px 24px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04)',
+        'soft': '0 2px 12px rgba(15, 23, 42, 0.06)',
+        'sidebar': '4px 0 24px rgba(15, 23, 42, 0.04)',
+        'dropdown': '0 10px 40px rgba(15, 23, 42, 0.12)',
+        'modal': '0 20px 60px rgba(15, 23, 42, 0.15)',
+        'icon': '0 4px 12px rgba(37, 99, 235, 0.15)',
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-out',

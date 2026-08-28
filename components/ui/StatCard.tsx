@@ -15,6 +15,7 @@ export interface StatCardProps {
   trendUp?: boolean;
   trendDirection?: 'up' | 'down';
   iconColor?: string;
+  iconBoxClass?: string;
   className?: string;
 }
 
@@ -26,7 +27,8 @@ export function StatCard({
   trend,
   trendUp = true,
   trendDirection,
-  iconColor = 'text-afya-600 bg-afya-50',
+  iconColor,
+  iconBoxClass = 'icon-box-blue',
   className,
 }: StatCardProps) {
   const isPositive = trendDirection ? trendDirection === 'up' : trendUp;
@@ -35,33 +37,37 @@ export function StatCard({
   const IconSlot = isIconComponent ? (icon as IconComponent) : null;
 
   return (
-    <Card variant="stat" className={cn('flex flex-col', className)}>
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="section-subtitle">{title}</h3>
-        <div className={cn('p-2 rounded-lg', iconColor)}>
-          {IconSlot ? <IconSlot className="w-5 h-5" /> : (icon as React.ReactNode)}
+    <Card variant="stat" className={cn('flex flex-col group hover:shadow-card-hover transition-all duration-200', className)}>
+      <div className="flex justify-between items-start mb-5">
+        <div className={cn('h-12 w-12', iconBoxClass)}>
+          {IconSlot ? (
+            <IconSlot className="w-6 h-6" />
+          ) : (
+            <span className={cn('flex items-center justify-center', iconColor)}>{icon as React.ReactNode}</span>
+          )}
         </div>
-      </div>
-      
-      <div className="flex items-baseline space-x-2">
-        <span className="stat-value">{value}</span>
         {trendObj && (
           <span className={cn(
-            'flex items-center text-xs font-medium',
-            trendObj.positive ? 'text-success-600' : 'text-danger-600'
+            'inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg',
+            trendObj.positive
+              ? 'bg-success-50 text-success-700'
+              : 'bg-danger-50 text-danger-700'
           )}>
             {trendObj.positive ? (
-              <IcTrendingUp className="h-4 w-4 mr-1" />
+              <IcTrendingUp className="h-3.5 w-3.5" />
             ) : (
-              <IcTrendingDown className="h-4 w-4 mr-1" />
+              <IcTrendingDown className="h-3.5 w-3.5" />
             )}
             {trendObj.value}
           </span>
         )}
       </div>
-      
+
+      <p className="text-sm font-medium text-slate-500 mb-1">{title}</p>
+      <span className="stat-value">{value}</span>
+
       {subtitle && (
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-slate-400">
           {subtitle}
         </p>
       )}

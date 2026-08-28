@@ -11,23 +11,23 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', icon: Icon, loading, children, disabled, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+    const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
     
     const variants = {
-      primary: 'bg-afya-600 text-white hover:bg-afya-700 focus-visible:ring-afya-600',
-      default: 'bg-afya-600 text-white hover:bg-afya-700 focus-visible:ring-afya-600',
-      secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200 focus-visible:ring-slate-500',
-      ghost: 'hover:bg-slate-100 text-slate-700 hover:text-slate-900 focus-visible:ring-slate-500',
-      outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 focus-visible:ring-slate-500',
+      primary: 'bg-gradient-to-r from-medic-600 to-medic-500 text-white hover:from-medic-700 hover:to-medic-600 focus-visible:ring-medic-500 shadow-icon',
+      default: 'bg-gradient-to-r from-medic-600 to-medic-500 text-white hover:from-medic-700 hover:to-medic-600 focus-visible:ring-medic-500 shadow-icon',
+      secondary: 'bg-slate-100 text-slate-700 hover:bg-slate-200 focus-visible:ring-slate-400',
+      ghost: 'hover:bg-slate-100 text-slate-600 hover:text-slate-900 focus-visible:ring-slate-400',
+      outline: 'border border-border bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 focus-visible:ring-slate-400',
       danger: 'bg-danger-600 text-white hover:bg-danger-700 focus-visible:ring-danger-600',
       destructive: 'bg-danger-600 text-white hover:bg-danger-700 focus-visible:ring-danger-600',
     };
 
     const sizes = {
-      sm: 'h-8 px-3 text-xs rounded-md',
-      md: 'h-10 px-4 py-2 text-sm rounded-md',
-      lg: 'h-12 px-8 text-base rounded-lg',
-      icon: 'h-10 w-10 p-2 rounded-md',
+      sm: 'h-8 px-3.5 text-xs rounded-lg',
+      md: 'h-10 px-5 py-2 text-sm rounded-xl',
+      lg: 'h-12 px-8 text-base rounded-xl',
+      icon: 'h-10 w-10 p-2 rounded-xl',
     };
 
     const iconSize = size === 'lg' ? 'h-5 w-5' : 'h-4 w-4';
