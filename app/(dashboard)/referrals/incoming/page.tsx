@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { mockReferrals, mockFacilities, mockPatients } from '@/lib/mock-data';
-import { Filter, Search, Eye, CheckCircle, XCircle } from 'lucide-react';
+import { IcFilter, IcSearch, IcEye, IcCheckCircle, IcXCircle } from '@/components/icons';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 
@@ -41,7 +41,7 @@ export default function IncomingReferralsPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <IcSearch className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by patient name or ID..." 
                 className="pl-9"
@@ -75,7 +75,7 @@ export default function IncomingReferralsPage() {
               />
             </div>
             <Button variant="outline" className="flex items-center gap-2">
-              <Filter className="w-4 h-4" /> Filters
+              <IcFilter className="w-4 h-4" /> Filters
             </Button>
           </div>
         </CardContent>
@@ -129,15 +129,15 @@ export default function IncomingReferralsPage() {
                         {referral.status === 'Pending' ? (
                           <>
                             <Button size="sm" variant="outline" className="text-success-600 border-success-200 hover:bg-success-50">
-                              <CheckCircle className="w-4 h-4 mr-1" /> Accept
+                              <IcCheckCircle className="w-4 h-4 mr-1" /> Accept
                             </Button>
                             <Button size="sm" variant="outline" className="text-danger-600 border-danger-200 hover:bg-danger-50">
-                              <XCircle className="w-4 h-4 mr-1" /> Decline
+                              <IcXCircle className="w-4 h-4 mr-1" /> Decline
                             </Button>
                           </>
                         ) : (
                           <Button size="sm" variant="outline">
-                            <Eye className="w-4 h-4 mr-1" /> View Chart
+                            <IcEye className="w-4 h-4 mr-1" /> View Chart
                           </Button>
                         )}
                       </div>
