@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Activity, ShieldCheck, Heart } from 'lucide-react';
+import { IcActivity, IcShieldCheck, IcHeart } from '@/components/icons';
 
 export function Footer() {
   return (
@@ -12,7 +12,7 @@ export function Footer() {
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2 font-bold text-lg text-white">
               <div className="w-7 h-7 rounded-lg bg-afya-600 flex items-center justify-center text-white">
-                <Activity className="w-4 h-4" />
+                <IcActivity className="w-4 h-4" />
               </div>
               <span>Afya<span className="text-afya-500">Pass</span></span>
             </div>
@@ -20,7 +20,7 @@ export function Footer() {
               Digital portable patient health-record platform. Empowering seamless healthcare continuity across participating facilities in Murang'a County, Kenya.
             </p>
             <div className="inline-flex items-center gap-2 text-[11px] text-slate-400 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <IcShieldCheck className="h-4 w-4 text-emerald-400" />
               <span>Pilot Target: Murang'a County, Kenya</span>
             </div>
           </div>
@@ -72,7 +72,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} AfyaPass Platform. All rights reserved.</p>
           <div className="flex items-center gap-1">
             <span>Built with care for public health in Kenya</span>
-            <Heart className="w-3 h-3 text-red-500 fill-red-500" />
+            <IcHeart className="h-4 w-4 text-red-500 fill-red-500" />
           </div>
         </div>
       </div>

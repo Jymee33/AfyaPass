@@ -1,36 +1,36 @@
 'use client';
 
 import React from 'react';
-import { Lock, RefreshCw, Layers, ShieldAlert, FileText, Activity } from 'lucide-react';
+import { IcLock, IcRefresh, IcLayers, IcShieldAlert, IcFileText, IcActivity } from '@/components/icons';
 
 const FEATURES = [
   {
-    icon: RefreshCw,
+    icon: IcRefresh,
     title: 'Cross-Facility Continuity',
     description: 'Patient records follow the patient seamlessly across public, private, and faith-based healthcare centers.',
   },
   {
-    icon: Lock,
+    icon: IcLock,
     title: 'Opaque QR Identification',
     description: 'Physical QR cards hold zero clinical data. They act as cryptographically signed pointers to authenticated records.',
   },
   {
-    icon: Layers,
+    icon: IcLayers,
     title: 'Role-Based Access Control',
     description: 'Granular policy separation between Patients, Healthcare Workers, Facility Admins, and County Officials.',
   },
   {
-    icon: ShieldAlert,
+    icon: IcShieldAlert,
     title: 'Immutable Audit Trail',
     description: 'Every record access, scan, and emergency override is recorded in an unalterable system audit log.',
   },
   {
-    icon: FileText,
+    icon: IcFileText,
     title: 'Consent-Driven Access',
     description: 'Patients retain visibility and consent control over which facilities can access their history.',
   },
   {
-    icon: Activity,
+    icon: IcActivity,
     title: 'County Analytics Engine',
     description: 'Provides de-identified epidemiological and facility workload analytics for Murang\'a County health management.',
   },
