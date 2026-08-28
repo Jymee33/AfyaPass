@@ -15,7 +15,7 @@ export default function PatientsPage() {
   const [search, setSearch] = useState('');
   
   return (
-    <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
@@ -23,7 +23,7 @@ export default function PatientsPage() {
           <p className="text-slate-500">Manage and search for registered AfyaPass patients across the county.</p>
         </div>
         <Link href="/patients/register">
-          <Button className="bg-afya-teal hover:bg-afya-teal-dark text-white">
+          <Button className="bg-afya-600 hover:bg-afya-700 text-white">
             <Plus className="w-4 h-4 mr-2" />
             Register New Patient
           </Button>
