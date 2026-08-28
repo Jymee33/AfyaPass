@@ -9,10 +9,10 @@ import { Badge } from '@/components/ui/Badge';
 export default function RolesPermissionsPage() {
   const roles = [
     { id: 'patient', name: 'Patient', icon: <Users className="w-4 h-4 text-slate-500" /> },
-    { id: 'healthcare_worker', name: 'Healthcare Worker', icon: <Activity className="w-4 h-4 text-blue-500" /> },
+    { id: 'healthcare_worker', name: 'Healthcare Worker', icon: <Activity className="w-4 h-4 text-info-500" /> },
     { id: 'facility_admin', name: 'Facility Admin', icon: <Building className="w-4 h-4 text-indigo-500" /> },
     { id: 'county_admin', name: 'County Admin', icon: <Shield className="w-4 h-4 text-purple-500" /> },
-    { id: 'system_auditor', name: 'System Auditor', icon: <FileKey className="w-4 h-4 text-red-500" /> },
+    { id: 'system_auditor', name: 'System Auditor', icon: <FileKey className="w-4 h-4 text-danger-500" /> },
   ];
 
   const permissions = [
@@ -65,8 +65,8 @@ export default function RolesPermissionsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Role-Based Access Control (RBAC)</h1>
-        <p className="text-sm text-gray-500 mt-1">Review system permissions and access boundaries across different user roles</p>
+        <h1 className="text-2xl font-semibold text-slate-900">Role-Based Access Control (RBAC)</h1>
+        <p className="text-sm text-slate-500 mt-1">Review system permissions and access boundaries across different user roles</p>
       </div>
 
       <Card>
@@ -101,7 +101,7 @@ export default function RolesPermissionsPage() {
                   {roles.map(role => (
                     <TableCell key={`${role.id}-${perm.key}`} className="text-center align-middle">
                       {matrix[role.id][perm.key] ? (
-                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        <Check className="w-5 h-5 text-success-500 mx-auto" />
                       ) : (
                         <X className="w-5 h-5 text-slate-300 mx-auto" />
                       )}
