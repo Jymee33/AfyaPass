@@ -227,7 +227,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <p className="text-xs text-slate-400 truncate">{activeProfile.title}</p>
             <p className="text-[10px] text-slate-500 truncate mt-0.5">{activeProfile.facility}</p>
           </div>
-          <ChevronUp className={cn("w-4 h-4 text-slate-400 transition-transform shrink-0", showRoleSelector && "rotate-180")} />
+          <IcChevronUp className={cn("w-4 h-4 text-slate-400 transition-transform shrink-0", showRoleSelector && "rotate-180")} />
         </button>
       </div>
     </aside>
