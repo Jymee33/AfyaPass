@@ -174,12 +174,12 @@ export function IcThermometer(props: UxwIconProps) {
 export function IcWind(props: UxwIconProps) {
   return (
     <UxwIcon viewBox="0 0 24 24" {...props}>
-      <path d="M14.5 17c0 1.65-1.35 3-3 3s-3-1.35-3-3h2c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1H2v-2h9.5c1.65 0 3 1.35 3 3zM19 6.5C19 4.57 17.43 3 15.5 3S12 4.57 12 6.5h2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5H2v2h13.5c1.93 0 3.5-1.57 3.5-3.5zm-.5 4.5H2v2h16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5v2c1.93 0 3.5-1.57 3.5-3.5S20.43 11 18.5 11z" />
+      <path d="M14.5 17c0 1.65-1.35 3-3 3s-3-1.35-3-3h2c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1H2v-2h9.5c1.65 0 3 1.35 3 3zM19 6.5C19 4.57 17.43 3 15.5 3S12 4.57 12 6.5h2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5 1.5 1.5H2v2h13.5c1.93 0 3.5-1.57 3.5-3.5zm-.5 4.5H2v2h16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5v2c1.93 0 3.5-1.57 3.5-3.5S20.43 11 18.5 11z" />
     </UxwIcon>
   );
 }
 
-/* ─── LABORATORY ────────────────────────────────────────────────── */
+/* ─── LABORATORY ──────────────────────────────────────────────────── */
 
 /** Flask — Lab Research Icon (uxwing.com/lab-research-icon/) */
 export function IcFlask(props: UxwIconProps) {
@@ -208,7 +208,7 @@ export function IcClipboard(props: UxwIconProps) {
   );
 }
 
-/* ─── REFERRALS ─────────────────────────────────────────────────── */
+/* ─── REFERRALS ──────────────────────────────────────────────────── */
 
 /** Arrow incoming (down-left) — Incoming Arrow Icon (uxwing.com/incoming-arrow-icon/) */
 export function IcArrowIncoming(props: UxwIconProps) {
@@ -269,7 +269,7 @@ export function IcNavigation(props: UxwIconProps) {
   );
 }
 
-/* ─── FACILITIES ────────────────────────────────────────────────── */
+/* ─── FACILITIES ──────────────────────────────────────────────────── */
 
 /** Hospital — Hospital Icon (uxwing.com/hospital-icon/) */
 export function IcHospital(props: UxwIconProps) {
@@ -365,7 +365,7 @@ export function IcEyeOff(props: UxwIconProps) {
   );
 }
 
-/* ─── ADMINISTRATION ────────────────────────────────────────────── */
+/* ─── ADMINISTRATION ────────────────────────────────────────── */
 
 /** UserCog — User Setting / Gear Icon (uxwing.com/user-setting-icon/) */
 export function IcUserCog(props: UxwIconProps) {
@@ -449,7 +449,7 @@ export function IcLayers(props: UxwIconProps) {
   );
 }
 
-/* ─── COMMUNICATION ─────────────────────────────────────────────── */
+/* ─── COMMUNICATION ─────────────────────────────────────────── */
 
 /** Phone — Phone Icon (uxwing.com/phone-icon/) */
 export function IcPhone(props: UxwIconProps) {
@@ -495,3 +495,5 @@ export function IcPrint(props: UxwIconProps) {
     </UxwIcon>
   );
 }
+
+export * from './controls';
