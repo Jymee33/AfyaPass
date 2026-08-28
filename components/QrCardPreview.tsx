@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { QrCode, ShieldCheck } from 'lucide-react';
+import { IcQr, IcShieldCheck } from '@/components/icons';
 
 interface QrCardPreviewProps {
   patientName?: string;
@@ -69,7 +69,7 @@ export function QrCardPreview({
             </div>
           </div>
           <div className="text-[9px] font-mono text-slate-400 mt-1 flex items-center gap-1">
-            <QrCode className="w-2.5 h-2.5 text-afya-400" />
+            <IcQr className="h-4 w-4 text-afya-400" />
             <span>Ref ID QR</span>
           </div>
         </div>
@@ -77,7 +77,7 @@ export function QrCardPreview({
 
       <div className="mt-4 pt-3 border-t border-slate-700/80 flex items-center justify-between text-[11px] text-slate-300">
         <div className="flex items-center gap-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <IcShieldCheck className="h-4 w-4 text-emerald-400" />
           <span>Non-Identifying QR Payload</span>
         </div>
         <span className="font-mono text-[10px] text-slate-400">v1.0.0</span>
