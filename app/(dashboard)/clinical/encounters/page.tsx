@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Table } from '@/components/ui/Table';
 import { SearchInput } from '@/components/ui/SearchInput';
 import { Select } from '@/components/ui/Select';
-import { Plus } from 'lucide-react';
+import { IcPlus } from '@/components/icons';
 import { mockEncounters } from '@/lib/mock-data';
 
 export default function EncountersPage() {
@@ -19,7 +19,7 @@ export default function EncountersPage() {
           <p className="text-sm text-slate-500 mt-1">Manage and view patient visits and encounters</p>
         </div>
         <Button>
-          <Plus className="w-4 h-4 mr-2" />
+          <IcPlus className="w-4 h-4 mr-2" />
           File New Encounter
         </Button>
       </div>

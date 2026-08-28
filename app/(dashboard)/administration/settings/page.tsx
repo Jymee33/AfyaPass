@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Badge } from '@/components/ui/Badge';
-import { Settings, Shield, Network, Database, Save, RotateCcw } from 'lucide-react';
+import { IcSettings, IcShield, IcNetwork, IcDatabase, IcSave, IcRotateCcw } from '@/components/icons';
 
 export default function SystemSettingsPage() {
   return (
@@ -18,10 +18,10 @@ export default function SystemSettingsPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline" className="flex items-center gap-2">
-            <RotateCcw className="w-4 h-4" /> Reset
+            <IcRotateCcw className="w-4 h-4" /> Reset
           </Button>
           <Button className="flex items-center gap-2">
-            <Save className="w-4 h-4" /> Save Changes
+            <IcSave className="w-4 h-4" /> Save Changes
           </Button>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Settings className="w-5 h-5 text-info-600" />
+                <IcSettings className="w-5 h-5 text-info-600" />
                 <CardTitle>Pilot Configuration</CardTitle>
               </div>
               <Badge variant="outline" className="bg-info-50 text-info-700">Active</Badge>
@@ -77,7 +77,7 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-danger-600" />
+                <IcShield className="w-5 h-5 text-danger-600" />
                 <CardTitle>Security & Encryption</CardTitle>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Network className="w-5 h-5 text-afya-600" />
+                <IcNetwork className="w-5 h-5 text-afya-600" />
                 <CardTitle>Interoperability</CardTitle>
               </div>
               <Badge variant="success">Connected</Badge>
@@ -151,7 +151,7 @@ export default function SystemSettingsPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Database className="w-5 h-5 text-indigo-600" />
+              <IcDatabase className="w-5 h-5 text-indigo-600" />
               <CardTitle>Audit & Retention</CardTitle>
             </div>
             <CardDescription>Data lifecycle management policies</CardDescription>

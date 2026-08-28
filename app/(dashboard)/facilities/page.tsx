@@ -7,7 +7,7 @@ import { StatCard } from '@/components/ui/StatCard';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { mockFacilities } from '@/lib/mock-data';
-import { Plus, Filter, Search, Building2, Activity, WifiHigh } from 'lucide-react';
+import { IcPlus, IcFilter, IcSearch, IcHospital, IcActivity, IcWifi } from '@/components/icons';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ export default function FacilitiesDirectoryPage() {
           <p className="text-sm text-slate-500 mt-1">Directory of all registered healthcare facilities in the county</p>
         </div>
         <Button className="flex items-center gap-2">
-          <Plus className="w-4 h-4" />
+          <IcPlus className="w-4 h-4" />
           Register Facility
         </Button>
       </div>
@@ -50,22 +50,22 @@ export default function FacilitiesDirectoryPage() {
         <StatCard 
           title="Total Registered" 
           value={totalRegistered} 
-          icon={<Building2 className="w-5 h-5 text-indigo-600" />}
+          icon={<IcHospital className="w-5 h-5 text-indigo-600" />}
         />
         <StatCard 
           title="Public Facilities" 
           value={publicCount} 
-          icon={<Building2 className="w-5 h-5 text-info-600" />}
+          icon={<IcHospital className="w-5 h-5 text-info-600" />}
         />
         <StatCard 
           title="Private & Faith-Based" 
           value={privateCount} 
-          icon={<Building2 className="w-5 h-5 text-purple-600" />}
+          icon={<IcHospital className="w-5 h-5 text-purple-600" />}
         />
         <StatCard 
           title="Digital Sync Rate" 
           value={`${syncRate}%`} 
-          icon={<WifiHigh className="w-5 h-5 text-success-600" />}
+          icon={<IcWifi className="w-5 h-5 text-success-600" />}
           trend="+4%"
           trendDirection="up"
         />
@@ -75,7 +75,7 @@ export default function FacilitiesDirectoryPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <IcSearch className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search facility name or MFL code..." 
                 className="pl-9"
@@ -124,8 +124,8 @@ export default function FacilitiesDirectoryPage() {
                 ]}
               />
             </div>
-            <Button variant="outline" className="flex items-center gap-2">
-              <Filter className="w-4 h-4" />
+            <Button variant="outline" className="flex items-center gap-2" aria-label="Filter">
+              <IcFilter className="w-4 h-4" />
             </Button>
           </div>
         </CardContent>
@@ -163,7 +163,7 @@ export default function FacilitiesDirectoryPage() {
                   <TableCell className="text-right">
                     <Link href={`/facilities/${facility.id}`}>
                       <Button size="sm" variant="outline">
-                        <Activity className="w-4 h-4 mr-1" /> View Dashboard
+                        <IcActivity className="w-4 h-4 mr-1" /> View Dashboard
                       </Button>
                     </Link>
                   </TableCell>

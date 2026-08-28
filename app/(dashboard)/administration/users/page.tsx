@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { mockHealthcareWorkers, mockFacilities } from '@/lib/mock-data';
-import { Plus, Search, Filter, MoreHorizontal, UserCheck, UserX } from 'lucide-react';
+import { IcPlus, IcSearch, IcFilter, IcMore, IcUserCheck, IcUserX } from '@/components/icons';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 
@@ -29,7 +29,7 @@ export default function UsersManagementPage() {
           <p className="text-sm text-slate-500 mt-1">Manage system access, roles, and credentials for healthcare workers</p>
         </div>
         <Button className="flex items-center gap-2">
-          <Plus className="w-4 h-4" />
+          <IcPlus className="w-4 h-4" />
           Invite User
         </Button>
       </div>
@@ -38,7 +38,7 @@ export default function UsersManagementPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <IcSearch className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by name or license number..." 
                 className="pl-9"
@@ -60,7 +60,7 @@ export default function UsersManagementPage() {
               />
             </div>
             <Button variant="outline" className="flex items-center gap-2">
-              <Filter className="w-4 h-4" /> Filters
+              <IcFilter className="w-4 h-4" /> Filters
             </Button>
           </div>
         </CardContent>
@@ -97,13 +97,13 @@ export default function UsersManagementPage() {
                     <TableCell className="font-mono text-xs">{user.licenseNumber}</TableCell>
                     <TableCell>
                       <Badge variant={user.isVerified ? 'success' : 'warning'} className="rounded-full flex items-center gap-1 w-max">
-                        {user.isVerified ? <UserCheck className="w-3 h-3" /> : <UserX className="w-3 h-3" />}
+                        {user.isVerified ? <IcUserCheck className="h-4 w-4" /> : <IcUserX className="h-4 w-4" />}
                         {user.isVerified ? 'Active' : 'Pending Verification'}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                        <MoreHorizontal className="w-4 h-4" />
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0" aria-label="More actions">
+                        <IcMore className="w-4 h-4" />
                       </Button>
                     </TableCell>
                   </TableRow>

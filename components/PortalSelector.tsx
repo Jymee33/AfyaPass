@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { User, Building2, BarChart3, CheckCircle2, ArrowRight } from 'lucide-react';
+import { IcUser, IcHospital, IcBarChart, IcCheckCircle, IcArrowRight } from '@/components/icons';
 
 export function PortalSelector() {
   const [activePortal, setActivePortal] = useState<'patient' | 'facility' | 'county'>('facility');
@@ -29,7 +29,7 @@ export function PortalSelector() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <User className="w-4 h-4" />
+              <IcUser className="w-4 h-4" />
               Patient Portal
             </button>
             <button
@@ -40,7 +40,7 @@ export function PortalSelector() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Building2 className="w-4 h-4" />
+              <IcHospital className="w-4 h-4" />
               Facility Portal
             </button>
             <button
@@ -51,7 +51,7 @@ export function PortalSelector() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <BarChart3 className="w-4 h-4" />
+              <IcBarChart className="w-4 h-4" />
               County Admin
             </button>
           </div>
@@ -61,7 +61,7 @@ export function PortalSelector() {
           {activePortal === 'patient' && (
             <div className="space-y-6">
               <div className="flex items-center gap-3 text-afya-400 font-semibold text-sm">
-                <User className="w-5 h-5" />
+                <IcUser className="w-5 h-5" />
                 <span>Patient Self-Service Concept</span>
               </div>
               <h3 className="text-2xl font-bold">Manage Your AfyaPass ID & Digital Health Consent</h3>
@@ -70,15 +70,15 @@ export function PortalSelector() {
               </p>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   View laminated card QR code & AfyaPass ID reference
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Revoke or grant facility-level access permissions
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Full access log history showing facility, clinician & timestamp
                 </li>
               </ul>
@@ -87,7 +87,7 @@ export function PortalSelector() {
                   href="/patient"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-afya-500 hover:bg-afya-400 text-slate-950 font-semibold rounded-lg text-sm transition-colors"
                 >
-                  Explore Patient Portal Demo <ArrowRight className="w-4 h-4" />
+                  Explore Patient Portal Demo <IcArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -96,7 +96,7 @@ export function PortalSelector() {
           {activePortal === 'facility' && (
             <div className="space-y-6">
               <div className="flex items-center gap-3 text-afya-400 font-semibold text-sm">
-                <Building2 className="w-5 h-5" />
+                <IcHospital className="w-5 h-5" />
                 <span>Healthcare Worker & Facility Portal</span>
               </div>
               <h3 className="text-2xl font-bold">Fast QR Identification & Clinical Encounter Filing</h3>
@@ -105,15 +105,15 @@ export function PortalSelector() {
               </p>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Instant QR card scan & AfyaPass ID lookup
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Log vitals, ICD-11 diagnosis codes, prescriptions & referrals
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Emergency access override protocol with mandatory audit logging
                 </li>
               </ul>
@@ -122,7 +122,7 @@ export function PortalSelector() {
                   href="/facility"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-afya-500 hover:bg-afya-400 text-slate-950 font-semibold rounded-lg text-sm transition-colors"
                 >
-                  Explore Facility Portal Demo <ArrowRight className="w-4 h-4" />
+                  Explore Facility Portal Demo <IcArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -131,7 +131,7 @@ export function PortalSelector() {
           {activePortal === 'county' && (
             <div className="space-y-6">
               <div className="flex items-center gap-3 text-afya-400 font-semibold text-sm">
-                <BarChart3 className="w-5 h-5" />
+                <IcBarChart className="w-5 h-5" />
                 <span>County Administration & Public Health</span>
               </div>
               <h3 className="text-2xl font-bold">De-Identified Epidemiological & Facility Metrics</h3>
@@ -140,15 +140,15 @@ export function PortalSelector() {
               </p>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   Sub-county facility encounter volume charts
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   MFL registered facility status & staff audit summary
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <IcCheckCircle className="w-4 h-4 text-emerald-400" />
                   De-identified public health surveillance reporting
                 </li>
               </ul>
@@ -157,7 +157,7 @@ export function PortalSelector() {
                   href="/county"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-afya-500 hover:bg-afya-400 text-slate-950 font-semibold rounded-lg text-sm transition-colors"
                 >
-                  Explore County Dashboard Demo <ArrowRight className="w-4 h-4" />
+                  Explore County Dashboard Demo <IcArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>

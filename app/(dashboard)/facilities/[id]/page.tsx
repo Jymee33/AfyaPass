@@ -4,7 +4,7 @@ import { StatCard } from '@/components/ui/StatCard';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { mockFacilities, mockHealthcareWorkers, mockEncounters, mockReferrals } from '@/lib/mock-data';
-import { Building2, Users, Activity, UserPlus, MapPin, Phone, Mail, FileText } from 'lucide-react';
+import { IcHospital, IcUsers, IcActivity, IcUserPlus, IcMapPin, IcPhone, IcMail, IcFileText } from '@/components/icons';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
@@ -33,7 +33,7 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 bg-info-50 text-info-600 rounded-lg flex items-center justify-center flex-shrink-0">
-            <Building2 className="w-8 h-8" />
+            <IcHospital className="h-6 w-6" />
           </div>
           <div>
             <div className="flex items-center gap-3">
@@ -42,8 +42,8 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
             </div>
             <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
               <span className="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700">{facility.facilityCode}</span>
-              <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {facility.subCounty}, {facility.county}</span>
-              <span className="flex items-center gap-1"><FileText className="w-4 h-4" /> {facility.facilityType}</span>
+              <span className="flex items-center gap-1"><IcMapPin className="w-4 h-4" /> {facility.subCounty}, {facility.county}</span>
+              <span className="flex items-center gap-1"><IcFileText className="w-4 h-4" /> {facility.facilityType}</span>
             </div>
           </div>
         </div>
@@ -59,24 +59,24 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
         <StatCard 
           title="Today's Patients" 
           value={todayPatients} 
-          icon={<Users className="w-5 h-5 text-info-600" />}
+          icon={<IcUsers className="w-5 h-5 text-info-600" />}
           trend="+12%"
           trendDirection="up"
         />
         <StatCard 
           title="Active Encounters" 
           value={activeEncounters} 
-          icon={<Activity className="w-5 h-5 text-indigo-600" />}
+          icon={<IcActivity className="w-5 h-5 text-indigo-600" />}
         />
         <StatCard 
           title="Pending Referrals" 
           value={referralsPending.length} 
-          icon={<UserPlus className="w-5 h-5 text-warning-600" />}
+          icon={<IcUserPlus className="w-5 h-5 text-warning-600" />}
         />
         <StatCard 
           title="On-Duty Staff" 
           value={onDutyStaff} 
-          icon={<Users className="w-5 h-5 text-afya-600" />}
+          icon={<IcUsers className="w-5 h-5 text-afya-600" />}
         />
       </div>
 
@@ -150,11 +150,11 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-slate-400" />
+                  <IcPhone className="w-4 h-4 text-slate-400" />
                   <span className="text-slate-600">+254 700 000 000</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-slate-400" />
+                  <IcMail className="w-4 h-4 text-slate-400" />
                   <span className="text-slate-600">admin@{facility.name.toLowerCase().replace(/[^a-z0-9]/g, '')}.go.ke</span>
                 </div>
               </div>

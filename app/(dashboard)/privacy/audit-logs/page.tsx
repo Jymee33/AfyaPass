@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
-import { ShieldCheck, Search, Filter } from 'lucide-react';
+import { IcShieldCheck, IcSearch, IcFilter } from '@/components/icons';
 import { AuditLogEntry } from '@/types';
 import { mockHealthcareWorkers, mockFacilities, mockPatients } from '@/lib/mock-data';
 
@@ -98,7 +98,7 @@ export default function AuditLogsPage() {
           <p className="text-sm text-slate-500 mt-1">Monitor system access, consent overrides, and security events</p>
         </div>
         <div className="flex items-center gap-2 bg-danger-50 text-danger-700 px-3 py-1.5 rounded-full text-sm font-medium border border-danger-200">
-          <ShieldCheck className="w-4 h-4" />
+          <IcShieldCheck className="w-4 h-4" />
           Restricted Access: System Auditors & County Administrators Only
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function AuditLogsPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <IcSearch className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by actor or log ID..." 
                 className="pl-9"
@@ -141,7 +141,7 @@ export default function AuditLogsPage() {
               />
             </div>
             <Button variant="outline" className="flex items-center gap-2">
-              <Filter className="w-4 h-4" /> Export
+              <IcFilter className="w-4 h-4" /> Export
             </Button>
           </div>
         </CardContent>

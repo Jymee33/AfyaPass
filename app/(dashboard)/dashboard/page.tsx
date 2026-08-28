@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { StatCard } from '@/components/ui/StatCard';
-import { Users, Stethoscope, ArrowLeftRight, FlaskConical, Plus, QrCode, AlertTriangle } from 'lucide-react';
+import { IcUsers, IcStethoscope, IcArrowLeftRight, IcFlask, IcPlus, IcQr, IcAlert } from '@/components/icons';
 import { mockActivityEvents } from '@/lib/mock-data';
 import { ActivityEvent } from '@/types';
 import { formatDate } from '@/lib/utils';
@@ -22,16 +22,16 @@ export default function DashboardPage() {
         <div className="flex flex-wrap gap-3">
           <Link href="/patients/register">
             <Button className="bg-afya-600 hover:bg-afya-700 text-white shadow-sm">
-              <Plus className="w-4 h-4 mr-2" />
+              <IcPlus className="w-4 h-4 mr-2" />
               Register Patient
             </Button>
           </Link>
           <Button variant="outline" className="shadow-sm">
-            <Plus className="w-4 h-4 mr-2" />
+            <IcPlus className="w-4 h-4 mr-2" />
             New Encounter
           </Button>
           <Button variant="outline" className="shadow-sm">
-            <QrCode className="w-4 h-4 mr-2" />
+            <IcQr className="w-4 h-4 mr-2" />
             Scan QR Card
           </Button>
         </div>
@@ -43,28 +43,28 @@ export default function DashboardPage() {
           value="28,450" 
           trend="+12.4% vs last week" 
           trendUp={true} 
-          icon={<Users className="w-5 h-5 text-info-600" />} 
+          icon={<IcUsers className="w-5 h-5 text-info-600" />} 
         />
         <StatCard 
           title="Today's Encounters" 
           value="89" 
           trend="+8 today" 
           trendUp={true} 
-          icon={<Stethoscope className="w-5 h-5 text-afya-600" />} 
+          icon={<IcStethoscope className="w-5 h-5 text-afya-600" />} 
         />
         <StatCard 
           title="Active Referrals" 
           value="23" 
           trend="4 urgent" 
           trendUp={false} 
-          icon={<ArrowLeftRight className="w-5 h-5 text-orange-500" />} 
+          icon={<IcArrowLeftRight className="w-5 h-5 text-orange-500" />} 
         />
         <StatCard 
           title="Pending Lab Orders" 
           value="34" 
           trend="12 awaiting review" 
           trendUp={false} 
-          icon={<FlaskConical className="w-5 h-5 text-purple-500" />} 
+          icon={<IcFlask className="w-5 h-5 text-purple-500" />} 
         />
       </div>
 
@@ -142,7 +142,7 @@ export default function DashboardPage() {
           <Card className="border-orange-200 bg-orange-50/50">
             <CardContent className="p-4 flex gap-4 items-start">
               <div className="bg-orange-100 p-2 rounded-full text-orange-600">
-                <AlertTriangle className="w-5 h-5" />
+                <IcAlert className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-medium text-orange-900 text-sm">Emergency Override</h3>
@@ -162,19 +162,19 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-3">
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <Plus className="w-5 h-5 text-afya-600" />
+                <IcPlus className="w-5 h-5 text-afya-600" />
                 <span className="text-xs">Register Patient</span>
               </Button>
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <Stethoscope className="w-5 h-5 text-afya-600" />
+                <IcStethoscope className="w-5 h-5 text-afya-600" />
                 <span className="text-xs">File Encounter</span>
               </Button>
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <QrCode className="w-5 h-5 text-slate-600" />
+                <IcQr className="w-5 h-5 text-slate-600" />
                 <span className="text-xs">Scan QR</span>
               </Button>
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <ArrowLeftRight className="w-5 h-5 text-purple-600" />
+                <IcArrowLeftRight className="w-5 h-5 text-purple-600" />
                 <span className="text-xs">Create Referral</span>
               </Button>
             </CardContent>
