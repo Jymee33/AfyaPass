@@ -364,3 +364,87 @@ export function IcEyeOff(props: UxwIconProps) {
     </UxwIcon>
   );
 }
+
+/* ─── ADMINISTRATION ────────────────────────────────────────────── */
+
+/** UserCog — User Setting / Gear Icon (uxwing.com/user-setting-icon/) */
+export function IcUserCog(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M10 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h9.41c-.26-.4-.41-.86-.41-1.36 0-1.31.94-2.5 2.24-2.79C12.04 15.26 11.07 15 10 15z" />
+      <path d="M20.91 14.31c.02-.22.04-.44.04-.67s-.02-.45-.04-.67l1.07-.84c.1-.07.12-.21.06-.32l-1.01-1.75c-.06-.11-.19-.15-.31-.11l-1.26.51c-.26-.2-.54-.37-.85-.49l-.19-1.34c-.02-.12-.13-.22-.25-.22h-2.03c-.13 0-.23.09-.25.22l-.19 1.34c-.31.12-.59.29-.85.49l-1.26-.51c-.12-.04-.25 0-.31.11l-1.01 1.75c-.06.11-.03.24.06.32l1.07.84c-.02.22-.04.45-.04.67s.02.45.04.67l-1.07.84c-.1.07-.12.21-.06.32l1.01 1.75c.06.11.19.15.31.11l1.26-.51c.26.2.54.37.85.49l.19 1.34c.02.12.12.22.25.22h2.03c.13 0 .23-.09.25-.22l.19-1.34c.31-.12.59-.29.85-.49l1.26.51c.12.04.25 0 .31-.11l1.01-1.75c.06-.11.03-.24-.06-.32l-1.07-.84zM17.5 16.16c-.88 0-1.6-.72-1.6-1.6s.72-1.6 1.6-1.6 1.6.72 1.6 1.6-.72 1.6-1.6 1.6z" />
+    </UxwIcon>
+  );
+}
+
+/** Lock — Lock Icon (uxwing.com/lock-icon/) */
+export function IcLock(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+    </UxwIcon>
+  );
+}
+
+/** Gear / Settings — Gear Setting Icon (uxwing.com/gear-setting-icon/) */
+export function IcSettings(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+    </UxwIcon>
+  );
+}
+
+/** Database — Database Icon (uxwing.com/database-icon/) */
+export function IcDatabase(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z" />
+    </UxwIcon>
+  );
+}
+
+/** Network — Network Hub Icon (uxwing.com/network-hub-icon/) */
+export function IcNetwork(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z" />
+    </UxwIcon>
+  );
+}
+
+/** Wifi — Wifi Signal Icon (uxwing.com/wifi-signal-icon/) */
+export function IcWifi(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" />
+    </UxwIcon>
+  );
+}
+
+/** Save — Save Floppy Icon (uxwing.com/save-floppy-icon/) */
+export function IcSave(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
+    </UxwIcon>
+  );
+}
+
+/** History — History Clock Icon (uxwing.com/history-clock-icon/) */
+export function IcHistory(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+    </UxwIcon>
+  );
+}
+
+/** Layers — Layers Stack Icon (uxwing.com/layers-stack-icon/) */
+export function IcLayers(props: UxwIconProps) {
+  return (
+    <UxwIcon viewBox="0 0 24 24" {...props}>
+      <path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z" />
+    </UxwIcon>
+  );
+}
