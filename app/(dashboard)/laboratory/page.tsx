@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { StatCard } from '@/components/ui/StatCard';
 import { SearchInput } from '@/components/ui/SearchInput';
 import { Select } from '@/components/ui/Select';
-import { Plus, TestTube, Clock, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { IcPlus, IcTestTube, IcClock, IcCheckCircle, IcAlert } from '@/components/icons';
 import { mockLabOrders } from '@/lib/mock-data';
 
 export default function LabOrdersPage() {
@@ -20,7 +20,7 @@ export default function LabOrdersPage() {
           <p className="text-sm text-slate-500 mt-1">Manage and track laboratory test orders</p>
         </div>
         <Button>
-          <Plus className="w-4 h-4 mr-2" />
+          <IcPlus className="w-4 h-4 mr-2" />
           Create Lab Order
         </Button>
       </div>
@@ -29,22 +29,22 @@ export default function LabOrdersPage() {
         <StatCard
           title="Pending Orders"
           value="34"
-          icon={<TestTube className="w-5 h-5 text-slate-400" />}
+          icon={<IcTestTube className="w-5 h-5 text-slate-400" />}
         />
         <StatCard
           title="In Progress"
           value="14"
-          icon={<Clock className="w-5 h-5 text-info-500" />}
+          icon={<IcClock className="w-5 h-5 text-info-500" />}
         />
         <StatCard
           title="Completed Today"
           value="28"
-          icon={<CheckCircle2 className="w-5 h-5 text-success-500" />}
+          icon={<IcCheckCircle className="w-5 h-5 text-success-500" />}
         />
         <StatCard
           title="Urgent STAT"
           value="3"
-          icon={<AlertTriangle className="w-5 h-5 text-warning-500" />}
+          icon={<IcAlert className="w-5 h-5 text-warning-500" />}
         />
       </div>
 
