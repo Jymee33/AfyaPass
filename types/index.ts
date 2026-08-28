@@ -189,7 +189,7 @@ export interface ActivityEvent {
 export type NavigationItem = {
   label: string;
   href: string;
-  icon: string; // lucide icon name
+  icon: string; // icon name
   children?: NavigationItem[];
   requiredPermission?: keyof import('@/lib/rbac').AccessRule;
 };
