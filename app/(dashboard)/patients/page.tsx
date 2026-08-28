@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/Input';
 import { Badge } from '@/components/ui/Badge';
 import { Avatar } from '@/components/ui/Avatar';
 import { Card } from '@/components/ui/Card';
-import { Search, Plus, Filter, ArrowUpDown } from 'lucide-react';
+import { IcSearch, IcPlus, IcFilter, IcArrowUpDown } from '@/components/icons';
 import { mockPatients } from '@/lib/mock-data';
 import { PatientProfile } from '@/types';
 import { getInitials } from '@/lib/utils';
@@ -24,7 +24,7 @@ export default function PatientsPage() {
         </div>
         <Link href="/patients/register">
           <Button className="bg-afya-600 hover:bg-afya-700 text-white">
-            <Plus className="w-4 h-4 mr-2" />
+            <IcPlus className="w-4 h-4 mr-2" />
             Register New Patient
           </Button>
         </Link>
@@ -33,7 +33,7 @@ export default function PatientsPage() {
       {/* Filter Bar */}
       <Card className="p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <IcSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <Input 
             placeholder="Search by name or AfyaPass ID..." 
             className="pl-9 w-full"
@@ -55,8 +55,8 @@ export default function PatientsPage() {
             <option>Active</option>
             <option>Consent Granted</option>
           </select>
-          <Button variant="outline" size="icon">
-            <Filter className="w-4 h-4" />
+          <Button variant="outline" size="icon" aria-label="Filter">
+            <IcFilter className="w-4 h-4" />
           </Button>
         </div>
       </Card>
@@ -68,7 +68,7 @@ export default function PatientsPage() {
             <thead className="bg-slate-50 text-slate-500 border-b border-slate-200">
               <tr>
                 <th className="px-6 py-4 font-medium flex items-center gap-1 cursor-pointer hover:text-slate-800">
-                  Patient Name <ArrowUpDown className="w-3 h-3" />
+                  Patient Name <IcArrowUpDown className="h-4 w-4" />
                 </th>
                 <th className="px-6 py-4 font-medium">AfyaPass ID</th>
                 <th className="px-6 py-4 font-medium">DOB</th>
