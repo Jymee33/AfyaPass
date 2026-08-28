@@ -25,8 +25,8 @@ export default function UsersManagementPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">User Accounts & Identity Management</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage system access, roles, and credentials for healthcare workers</p>
+          <h1 className="text-2xl font-semibold text-slate-900">User Accounts & Identity Management</h1>
+          <p className="text-sm text-slate-500 mt-1">Manage system access, roles, and credentials for healthcare workers</p>
         </div>
         <Button className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -38,7 +38,7 @@ export default function UsersManagementPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by name or license number..." 
                 className="pl-9"
@@ -87,7 +87,7 @@ export default function UsersManagementPage() {
                   <TableRow key={user.id}>
                     <TableCell>
                       <div className="font-medium">{user.fullName}</div>
-                      <div className="text-xs text-gray-500">user_{user.id.split('-')[1]}@afyapass.go.ke</div>
+                      <div className="text-xs text-slate-500">user_{user.id.split('-')[1]}@afyapass.go.ke</div>
                     </TableCell>
                     <TableCell>
                       <Badge variant="outline" className="bg-slate-50">{user.roleTitle}</Badge>
@@ -111,7 +111,7 @@ export default function UsersManagementPage() {
               })}
               {filteredUsers.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={6} className="text-center py-8 text-slate-500">
                     No users found matching your criteria.
                   </TableCell>
                 </TableRow>
