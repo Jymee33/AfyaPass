@@ -29,12 +29,20 @@ export default function PatientPage() {
               <h2 className="font-display text-xl font-bold text-slate-900">Digital AfyaPass Card</h2>
               <p className="text-sm text-slate-500 mt-1">Your portable health identifier for Murang&apos;a County facilities</p>
             </div>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-start pb-6">
               <QrCardPreview
+                flipable
                 patientName="Wanjiku Njuguna (Demo)"
                 afyaPassId="AFY-KE-MUR-2026-98421"
                 county="Murang'a County"
                 facilityName="Kiharu Sub-County"
+                signature="W. Njuguna"
+                emergencyContact={{
+                  name: 'John Doe',
+                  relation: 'Brother',
+                  phone: '+254 7XX XXXXXX',
+                  email: 'jdoe@provider.com',
+                }}
               />
             </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-200 space-y-3">

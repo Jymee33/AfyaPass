@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { IcQr, IcShieldCheck, IcStethoscope } from '@/components/icons';
+import { AfyaPassEmblem, AfyaPassWordmark } from '@/components/AfyaPassBrand';
+import { IcPhone, IcMail } from '@/components/icons';
 
-interface QrCardPreviewProps {
+export interface QrCardPreviewProps {
   patientName?: string;
   afyaPassId?: string;
   patientId?: string;
@@ -14,6 +16,16 @@ interface QrCardPreviewProps {
   expiryDate?: string;
   status?: 'active' | 'revoked' | 'expired';
   variant?: 'default' | 'hero';
+  showBack?: boolean;
+  flipable?: boolean;
+  patientPhotoUrl?: string;
+  emergencyContact?: {
+    name: string;
+    relation: string;
+    phone: string;
+    email: string;
+  };
+  signature?: string;
   className?: string;
 }
 
@@ -37,15 +49,23 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-/** Deterministic QR-style grid from patient ID (visual only, not scannable). */
-function QrCodeVisual({ value, className }: { value: string; className?: string }) {
-  const modules = 21;
+function QrCodeWithLogo({ value, className }: { value: string; className?: string }) {
+  const modules = 25;
   const cells = useMemo(() => {
     const h = hashString(value);
     const grid: boolean[][] = [];
+    const centerStart = 9;
+    const centerEnd = 16;
+
     for (let r = 0; r < modules; r++) {
       grid[r] = [];
       for (let c = 0; c < modules; c++) {
+        const inCenter = r >= centerStart && r <= centerEnd && c >= centerStart && c <= centerEnd;
+        if (inCenter) {
+          grid[r][c] = false;
+          continue;
+        }
+
         const inTopLeft = r < 7 && c < 7;
         const inTopRight = r < 7 && c >= modules - 7;
         const inBottomLeft = r >= modules - 7 && c < 7;
@@ -57,9 +77,7 @@ function QrCodeVisual({ value, className }: { value: string; className?: string 
           const inner = lr >= 2 && lr <= 4 && lc >= 2 && lc <= 4;
           grid[r][c] = outer || inner;
         } else {
-          const bit = (h >> ((r * modules + c) % 30)) & 1;
-          const timing = r === 6 || c === 6;
-          grid[r][c] = timing ? bit === 1 : ((h + r * 17 + c * 31) % 3) !== 0;
+          grid[r][c] = ((h + r * 17 + c * 31) % 4) !== 0;
         }
       }
     }
@@ -69,184 +87,351 @@ function QrCodeVisual({ value, className }: { value: string; className?: string 
   const cellSize = 100 / modules;
 
   return (
-    <svg viewBox="0 0 100 100" className={cn('w-full h-full', className)} aria-hidden="true">
-      <rect width="100" height="100" fill="white" rx="4" />
-      {cells.map((row, r) =>
-        row.map((filled, c) =>
-          filled ? (
-            <rect
-              key={`${r}-${c}`}
-              x={c * cellSize + 0.2}
-              y={r * cellSize + 0.2}
-              width={cellSize - 0.4}
-              height={cellSize - 0.4}
-              fill="#0F172A"
-              rx={0.3}
-            />
-          ) : null
-        )
-      )}
-    </svg>
+    <div className={cn('relative bg-white rounded-lg p-1', className)}>
+      <svg viewBox="0 0 100 100" className="w-full h-full" aria-hidden="true">
+        {cells.map((row, r) =>
+          row.map((filled, c) =>
+            filled ? (
+              <rect
+                key={`${r}-${c}`}
+                x={c * cellSize}
+                y={r * cellSize}
+                width={cellSize}
+                height={cellSize}
+                fill="#0F172A"
+              />
+            ) : null
+          )
+        )}
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="bg-white rounded-md p-0.5 shadow-sm">
+          <AfyaPassEmblem variant="compact" className="w-8 h-8" />
+        </div>
+      </div>
+    </div>
   );
 }
 
-function ChipIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 36 28" className={className} aria-hidden="true">
-      <rect x="1" y="1" width="34" height="26" rx="4" fill="url(#chipGrad)" stroke="rgba(255,255,255,0.3)" strokeWidth="0.5" />
-      <defs>
-        <linearGradient id="chipGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#FDE68A" />
-          <stop offset="100%" stopColor="#D97706" />
-        </linearGradient>
-      </defs>
-      <line x1="12" y1="1" x2="12" y2="27" stroke="rgba(0,0,0,0.15)" strokeWidth="0.5" />
-      <line x1="24" y1="1" x2="24" y2="27" stroke="rgba(0,0,0,0.15)" strokeWidth="0.5" />
-      <line x1="1" y1="9" x2="35" y2="9" stroke="rgba(0,0,0,0.15)" strokeWidth="0.5" />
-      <line x1="1" y1="19" x2="35" y2="19" stroke="rgba(0,0,0,0.15)" strokeWidth="0.5" />
-    </svg>
-  );
-}
-
-const statusStyles = {
-  active: 'bg-emerald-400/20 text-emerald-100 border-emerald-400/30',
-  revoked: 'bg-red-400/20 text-red-100 border-red-400/30',
-  expired: 'bg-amber-400/20 text-amber-100 border-amber-400/30',
+const statusBadge: Record<string, string> = {
+  active: 'bg-[#14B8A6] text-white',
+  revoked: 'bg-red-500 text-white',
+  expired: 'bg-amber-500 text-white',
 };
+
+function CardFront({
+  patientName,
+  displayId,
+  initials,
+  issueDate,
+  expiryDate,
+  status,
+  patientPhotoUrl,
+}: {
+  patientName: string;
+  displayId: string;
+  initials: string;
+  issueDate: string;
+  expiryDate: string;
+  status: string;
+  patientPhotoUrl?: string;
+}) {
+  return (
+    <div className="relative w-full h-full flex flex-col overflow-hidden rounded-[18px]">
+      {/* White header */}
+      <div className="bg-white px-4 py-2.5 flex items-center justify-between shrink-0 z-10">
+        <AfyaPassWordmark size="md" />
+        <span className={cn('text-[10px] font-bold uppercase tracking-wide px-3 py-1 rounded-full', statusBadge[status] ?? statusBadge.active)}>
+          {status}
+        </span>
+      </div>
+
+      {/* Gradient body */}
+      <div className="relative flex-1 bg-gradient-to-br from-[#0D9488] via-[#0F766E] to-[#1E3A5F] overflow-hidden">
+        {/* Watermark emblem */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <AfyaPassEmblem className="w-36 h-36 opacity-[0.12]" />
+        </div>
+        {/* AfyaPass text watermark */}
+        <div className="absolute bottom-2 left-3 text-white/[0.06] font-display font-extrabold text-2xl tracking-widest select-none">
+          AfyaPass
+        </div>
+        <div className="absolute bottom-2 right-3 text-white/[0.06] font-display font-extrabold text-2xl tracking-widest select-none">
+          AfyaPass
+        </div>
+
+        <div className="relative z-10 px-4 pt-2 pb-3 h-full flex flex-col">
+          <p className="text-white/90 text-[11px] font-medium mb-2">Digital Health ID</p>
+
+          <div className="flex gap-3 flex-1 min-h-0">
+            {/* Left column */}
+            <div className="flex-1 flex flex-col min-w-0">
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className="relative h-14 w-14 rounded-full overflow-hidden shrink-0 border-2 border-white/40 shadow-md">
+                  {patientPhotoUrl ? (
+                    <Image src={patientPhotoUrl} alt="" fill className="object-cover" />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-300 to-slate-400" />
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/25">
+                    <span className="font-display font-bold text-white text-lg drop-shadow">{initials}</span>
+                  </div>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-white/70 text-[10px]">Patient:</p>
+                  <p className="text-white font-bold text-sm leading-tight truncate">{patientName}</p>
+                </div>
+              </div>
+
+              {/* Info box */}
+              <div className="bg-white rounded-xl overflow-hidden shadow-lg text-[10px] mt-auto">
+                <div className="flex border-b border-slate-100">
+                  <span className="w-[72px] shrink-0 px-2.5 py-1.5 text-slate-500 font-medium bg-slate-50">AfyaPass ID</span>
+                  <span className="flex-1 px-2.5 py-1.5 font-bold text-slate-900 font-mono text-[9px] leading-tight">{displayId}</span>
+                </div>
+                <div className="flex border-b border-slate-100">
+                  <span className="w-[72px] shrink-0 px-2.5 py-1.5 text-slate-500 font-medium">Issued</span>
+                  <span className="flex-1 px-2.5 py-1.5 font-bold text-slate-900">{issueDate}</span>
+                </div>
+                <div className="flex">
+                  <span className="w-[72px] shrink-0 px-2.5 py-1.5 text-slate-500 font-medium bg-slate-50">Expires</span>
+                  <span className="flex-1 px-2.5 py-1.5 font-bold text-slate-900">{expiryDate}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* QR column */}
+            <div className="shrink-0 flex flex-col items-center justify-start pt-1">
+              <QrCodeWithLogo value={displayId} className="w-[100px] h-[100px]" />
+              <p className="text-white/80 text-[9px] font-medium mt-1.5 text-center">Scan to verify</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navy footer */}
+      <div className="bg-[#1E3A5F] px-4 py-1.5 flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-1.5">
+          <span className="text-white/50 text-[9px] font-bold tracking-widest">DEBIT</span>
+          <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-400/80" aria-hidden="true">
+            <path fill="currentColor" d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+          </svg>
+        </div>
+        <p className="text-white/40 text-[8px]">Opaque ref only · No PHI in QR</p>
+      </div>
+    </div>
+  );
+}
+
+function CardBack({
+  signature,
+  emergencyContact,
+}: {
+  signature: string;
+  emergencyContact: QrCardPreviewProps['emergencyContact'];
+}) {
+  const contact = emergencyContact ?? {
+    name: 'John Doe',
+    relation: 'Brother',
+    phone: '+254 7XX XXXXXX',
+    email: 'jdoe@provider.com',
+  };
+
+  const infoRows = [
+    'Valid at all participating "AfyaPass" network health centers.',
+    'Use of this card is subject to the terms and conditions available at www.afyapass.com/terms.',
+    'Cards remain the property of the issuer.',
+    'For Support and Verification, call: +254 2XX XXXXXX.',
+  ];
+
+  return (
+    <div className="relative w-full h-full flex flex-col overflow-hidden rounded-[18px] bg-gradient-to-b from-[#0F766E] to-[#1E3A5F]">
+      {/* Magnetic stripe */}
+      <div className="h-7 bg-[#1a1a1a] shrink-0" />
+
+      {/* Header */}
+      <div className="px-3 py-1.5 flex items-baseline gap-2 shrink-0">
+        <AfyaPassWordmark size="sm" className="!text-base" />
+        <span className="text-white/80 text-[9px] font-medium">Global Medical Emergency Information</span>
+      </div>
+
+      <div className="relative flex-1 px-3 pb-2 flex flex-col gap-2 min-h-0">
+        {/* Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.06]">
+          <span className="font-display font-extrabold text-4xl text-white rotate-[-15deg]">AfyaPass</span>
+        </div>
+
+        {/* Signature + Emergency */}
+        <div className="flex gap-2 relative z-10">
+          <div
+            className="flex-1 h-16 rounded-lg border border-white/20 overflow-hidden"
+            style={{
+              background: 'repeating-linear-gradient(-45deg, #f8fafc, #f8fafc 4px, #e2e8f0 4px, #e2e8f0 8px)',
+            }}
+          >
+            <p className="text-[#1E3A5F] font-serif italic text-lg px-3 pt-6">{signature}</p>
+          </div>
+          <div className="flex-1 bg-[#1E3A5F] rounded-lg p-2 text-white">
+            <p className="text-[8px] font-bold uppercase tracking-wide mb-1">Emergency Contact:</p>
+            <p className="text-[9px] font-semibold">{contact.name} ({contact.relation})</p>
+            <p className="text-[8px] text-white/80 flex items-center gap-1 mt-0.5">
+              <IcPhone className="w-2.5 h-2.5" /> Tel: {contact.phone}
+            </p>
+            <p className="text-[8px] text-white/80 flex items-center gap-1">
+              <IcMail className="w-2.5 h-2.5" /> {contact.email}
+            </p>
+          </div>
+        </div>
+
+        {/* Important information */}
+        <div className="relative z-10 flex-1 min-h-0">
+          <div className="bg-[#0D9488] rounded-t-lg px-2 py-1">
+            <p className="text-white text-[9px] font-bold uppercase tracking-wide text-center">Important Information</p>
+          </div>
+          <div className="bg-white rounded-b-lg overflow-hidden border border-[#0D9488]/30">
+            {infoRows.map((row, i) => (
+              <div
+                key={i}
+                className={cn(
+                  'px-2 py-1.5 text-[7.5px] text-slate-700 leading-snug border-b border-slate-100 last:border-0',
+                  i % 2 === 0 ? 'bg-white' : 'bg-slate-50'
+                )}
+              >
+                {row}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom footer */}
+        <div className="relative z-10 flex justify-between items-end gap-2 pt-1">
+          <p className="text-white/50 text-[6.5px] leading-tight max-w-[55%]">
+            This side provides emergency contact and card issuer details. No PHI is visible on this surface.
+          </p>
+          <div className="text-right">
+            <p className="text-white text-[8px] font-bold uppercase">Reward Program:</p>
+            <p className="text-white/70 text-[7px]">Participating Pharmacies &amp; Labs</p>
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-amber-300 ml-auto mt-0.5" aria-hidden="true">
+              <circle cx="8" cy="14" r="4" fill="currentColor" opacity="0.9" />
+              <circle cx="14" cy="12" r="4" fill="currentColor" opacity="0.7" />
+              <circle cx="18" cy="15" r="3" fill="currentColor" opacity="0.5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function QrCardPreview({
   patientName = 'Demo Patient',
   afyaPassId,
   patientId = 'AFY-KE-MUR-2026-98421',
-  county = "Murang'a County",
-  facilityName,
   issueDate = '2026-08-25',
   expiryDate = '2031-08-25',
   status = 'active',
   variant = 'default',
+  showBack = false,
+  flipable = false,
+  patientPhotoUrl,
+  emergencyContact,
+  signature,
   className,
 }: QrCardPreviewProps) {
+  const [flipped, setFlipped] = useState(false);
   const displayId = afyaPassId || patientId;
   const initials = getInitials(patientName);
+  const sig = signature ?? `${initials.charAt(0)}. ${patientName.split(' ').pop()?.replace(/\(.*\)/, '') ?? 'Patient'}`;
 
-  const card = (
+  const cardShell = (children: React.ReactNode) => (
     <div
       className={cn(
-        'relative w-full max-w-[400px] aspect-[1.586/1] rounded-[20px] overflow-hidden',
-        'shadow-[0_20px_60px_-12px_rgba(37,99,235,0.35),0_8px_24px_-8px_rgba(15,23,42,0.2)]',
-        variant === 'hero' && 'lg:rotate-2 hover:rotate-0 transition-transform duration-500',
+        'relative w-full max-w-[420px] aspect-[1.586/1] rounded-[20px] overflow-hidden',
+        'shadow-[0_16px_48px_-8px_rgba(13,148,136,0.35),0_8px_24px_-8px_rgba(30,58,95,0.25)]',
+        variant === 'hero' && 'lg:rotate-1 hover:rotate-0 transition-transform duration-500',
+        flipable && 'cursor-pointer',
         className
       )}
+      onClick={flipable ? () => setFlipped((f) => !f) : undefined}
+      role={flipable ? 'button' : undefined}
+      tabIndex={flipable ? 0 : undefined}
+      onKeyDown={flipable ? (e) => e.key === 'Enter' && setFlipped((f) => !f) : undefined}
     >
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-medic-600 via-medic-500 to-afya-500" />
+      {children}
+      {flipable && (
+        <p className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-400">
+          Tap to flip card
+        </p>
+      )}
+    </div>
+  );
 
-      {/* Decorative circles */}
-      <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-white/10 blur-2xl" />
-      <div className="absolute -bottom-20 -left-10 w-56 h-56 rounded-full bg-afya-400/20 blur-3xl" />
-      <div
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
+  if (showBack && !flipable) {
+    return cardShell(
+      <CardBack signature={sig} emergencyContact={emergencyContact} />
+    );
+  }
 
-      {/* Card content */}
-      <div className="relative h-full flex flex-col p-5 text-white">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="h-9 w-9 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0 border border-white/20">
-              <IcStethoscope className="h-4 w-4 text-white" />
-            </div>
-            <div className="min-w-0">
-              <p className="font-display font-bold text-base leading-tight tracking-tight">AfyaPass</p>
-              <p className="text-[10px] text-white/70 font-medium truncate">Digital Health ID</p>
-            </div>
+  if (flipable) {
+    return cardShell(
+      <div className="relative w-full h-full [perspective:1000px]">
+        <div
+          className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]"
+          style={{ transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+        >
+          <div className="absolute inset-0 [backface-visibility:hidden]">
+            <CardFront
+              patientName={patientName}
+              displayId={displayId}
+              initials={initials}
+              issueDate={issueDate}
+              expiryDate={expiryDate}
+              status={status}
+              patientPhotoUrl={patientPhotoUrl}
+            />
           </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <span
-              className={cn(
-                'text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border',
-                statusStyles[status]
-              )}
-            >
-              {status}
-            </span>
-            <ChipIcon className="w-9 h-7 opacity-90" />
+          <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+            <CardBack signature={sig} emergencyContact={emergencyContact} />
           </div>
-        </div>
-
-        {/* Body */}
-        <div className="flex-1 flex gap-4 min-h-0">
-          <div className="flex-1 flex flex-col justify-center min-w-0 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center font-display font-bold text-sm shrink-0">
-                {initials}
-              </div>
-              <div className="min-w-0">
-                <p className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Patient</p>
-                <p className="font-display font-bold text-sm leading-tight truncate">{patientName}</p>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-[10px] uppercase tracking-wider text-white/60 font-semibold mb-0.5">AfyaPass ID</p>
-              <p className="font-mono text-xs font-bold tracking-wide text-white/95 break-all leading-snug">
-                {displayId}
-              </p>
-            </div>
-
-            <div className="flex gap-4 text-[10px]">
-              <div>
-                <p className="text-white/50 uppercase tracking-wider font-semibold">Issued</p>
-                <p className="font-medium text-white/90">{issueDate}</p>
-              </div>
-              <div>
-                <p className="text-white/50 uppercase tracking-wider font-semibold">Expires</p>
-                <p className="font-medium text-white/90">{expiryDate}</p>
-              </div>
-            </div>
-
-            {(county || facilityName) && (
-              <p className="text-[10px] text-white/60 truncate">
-                {facilityName ? `${facilityName} · ` : ''}{county}
-              </p>
-            )}
-          </div>
-
-          {/* QR panel */}
-          <div className="shrink-0 flex flex-col items-center justify-center">
-            <div className="bg-white rounded-xl p-2 shadow-lg w-[88px] h-[88px]">
-              <QrCodeVisual value={displayId} />
-            </div>
-            <div className="flex items-center gap-1 mt-1.5 text-[9px] text-white/60 font-medium">
-              <IcQr className="h-3 w-3" />
-              <span>Scan to verify</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-3 mt-auto border-t border-white/15 text-[10px]">
-          <div className="flex items-center gap-1.5 text-white/70">
-            <IcShieldCheck className="h-3.5 w-3.5 text-emerald-300" />
-            <span>Opaque ref only · No PHI in QR</span>
-          </div>
-          <span className="font-mono text-white/40">v1.0</span>
         </div>
       </div>
-    </div>
+    );
+  }
+
+  const front = (
+    <CardFront
+      patientName={patientName}
+      displayId={displayId}
+      initials={initials}
+      issueDate={issueDate}
+      expiryDate={expiryDate}
+      status={status}
+      patientPhotoUrl={patientPhotoUrl}
+    />
   );
 
   if (variant === 'hero') {
     return (
       <div className="relative mx-auto">
-        <div className="absolute inset-4 bg-medic-500/20 rounded-[24px] blur-2xl scale-95" />
-        {card}
+        <div className="absolute inset-4 bg-teal-500/15 rounded-[24px] blur-2xl scale-95" />
+        {cardShell(front)}
       </div>
     );
   }
 
-  return card;
+  return cardShell(front);
+}
+
+/** Full AfyaPass logo image for marketing / navbar */
+export function AfyaPassLogoImage({ className }: { className?: string }) {
+  return (
+    <Image
+      src="/images/afyapass-logo.jpg"
+      alt="AfyaPass — One Patient. One Record. Any Health Center."
+      width={280}
+      height={200}
+      className={cn('object-contain', className)}
+      priority
+    />
+  );
 }

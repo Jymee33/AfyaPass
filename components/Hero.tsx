@@ -66,10 +66,12 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <QrCardPreview
               variant="hero"
+              flipable
               patientName="Wanjiku Njuguna"
               afyaPassId="AFY-KE-MUR-2026-98421"
               county="Murang'a County"
               facilityName="Murang'a Level 5"
+              signature="W. Njuguna"
             />
           </div>
         </div>

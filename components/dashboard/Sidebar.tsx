@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   IcDashboard, IcActivity, IcBell,
@@ -129,14 +130,14 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     >
       {/* Logo */}
       <div className="h-[72px] flex items-center px-5 border-b border-border/80 shrink-0 sticky top-0 bg-white z-10 justify-between">
-        <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-medic-500 to-afya-500 flex items-center justify-center shadow-icon">
-            <IcStethoscope className="h-5 w-5 text-white" />
-          </div>
-          <div>
-            <span className="font-display font-bold text-lg text-slate-900 leading-tight">AfyaPass</span>
-            <p className="text-[10px] text-slate-400 font-medium tracking-wide">HEALTH ERP</p>
-          </div>
+        <Link href="/dashboard" className="flex items-center">
+          <Image
+            src="/images/afyapass-logo.jpg"
+            alt="AfyaPass"
+            width={110}
+            height={40}
+            className="h-9 w-auto object-contain"
+          />
         </Link>
         <button className="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-50" onClick={onClose} aria-label="Close menu">
           <IcX className="h-5 w-5" />
