@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { LucideIcon } from 'lucide-react';
+import { IconComponent } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 export interface DropdownMenuItem {
   label: string;
-  icon?: LucideIcon;
+  icon?: IconComponent;
   onClick: () => void;
   danger?: boolean;
 }

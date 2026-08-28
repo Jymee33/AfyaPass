@@ -1,11 +1,11 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { LucideIcon } from 'lucide-react';
+import { IconComponent } from '@/components/icons';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
-  icon?: LucideIcon;
+  icon?: IconComponent;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ShieldAlert, CheckCircle2, Lock, EyeOff } from 'lucide-react';
+import { IcShieldAlert, IcCheckCircle, IcLock, IcEyeOff } from '@/components/icons';
 
 export function SecurityNotice() {
   return (
@@ -10,7 +10,7 @@ export function SecurityNotice() {
         <div className="bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-slate-700 pb-6 mb-6">
             <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/20">
-              <ShieldAlert className="w-6 h-6" />
+              <IcShieldAlert className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -28,7 +28,7 @@ export function SecurityNotice() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div className="space-y-2">
               <div className="flex items-center gap-2 font-semibold text-afya-300">
-                <EyeOff className="w-4 h-4" />
+                <IcEyeOff className="w-4 h-4" />
                 <span>Zero Medical Info in QR</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -38,7 +38,7 @@ export function SecurityNotice() {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 font-semibold text-afya-300">
-                <Lock className="w-4 h-4" />
+                <IcLock className="w-4 h-4" />
                 <span>Database Row-Level Security</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -48,7 +48,7 @@ export function SecurityNotice() {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 font-semibold text-afya-300">
-                <CheckCircle2 className="w-4 h-4" />
+                <IcCheckCircle className="w-4 h-4" />
                 <span>Immutable Audit Trail</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">

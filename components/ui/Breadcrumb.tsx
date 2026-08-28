@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight, Home } from 'lucide-react';
+import { IcChevronRight, IcHome } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 export interface BreadcrumbItem {
@@ -18,8 +18,8 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
     <nav className={cn('flex text-sm text-slate-500', className)} aria-label="Breadcrumb">
       <ol className="flex items-center space-x-2">
         <li>
-          <Link href="/" className="hover:text-slate-900 transition-colors">
-            <Home className="w-4 h-4" />
+          <Link href="/" className="hover:text-slate-900 transition-colors" aria-label="Home">
+            <IcHome className="w-4 h-4" />
           </Link>
         </li>
         {items.map((item, index) => {
@@ -27,7 +27,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
           
           return (
             <li key={index} className="flex items-center space-x-2">
-              <ChevronRight className="w-4 h-4 text-slate-400" />
+              <IcChevronRight className="w-4 h-4 text-slate-400" />
               {isLast || !item.href ? (
                 <span className="font-medium text-slate-900" aria-current="page">
                   {item.label}

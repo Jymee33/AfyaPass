@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { QrCode, ShieldCheck, Stethoscope, ArrowRight } from 'lucide-react';
+import { IcQr, IcShieldCheck, IcStethoscope, IcArrowRight } from '@/components/icons';
 
 export function Hero() {
   return (
@@ -13,7 +13,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-afya-500/10 text-afya-300 border border-afya-500/20">
-              <ShieldCheck className="w-4 h-4 text-afya-400" />
+              <IcShieldCheck className="w-4 h-4 text-afya-400" />
               <span>Digital Portable Health Record Platform</span>
             </div>
 
@@ -33,16 +33,16 @@ export function Hero() {
                 href="/patient"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-semibold text-slate-900 bg-afya-400 hover:bg-afya-300 shadow-lg shadow-afya-500/25 transition-all"
               >
-                <QrCode className="w-5 h-5" />
+                <IcQr className="w-5 h-5" />
                 View Patient AfyaPass Card
               </Link>
               <Link
                 href="/facility"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all"
               >
-                <Stethoscope className="w-5 h-5 text-afya-400" />
+                <IcStethoscope className="w-5 h-5 text-afya-400" />
                 Open Facility Portal
-                <ArrowRight className="w-4 h-4" />
+                <IcArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
