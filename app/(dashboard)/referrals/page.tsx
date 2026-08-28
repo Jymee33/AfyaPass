@@ -20,8 +20,8 @@ export default function ReferralsOverviewPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Cross-Facility Referral Network</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage and track patient transfers across facilities</p>
+          <h1 className="text-2xl font-semibold text-slate-900">Cross-Facility Referral Network</h1>
+          <p className="text-sm text-slate-500 mt-1">Manage and track patient transfers across facilities</p>
         </div>
         <Button className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -33,26 +33,26 @@ export default function ReferralsOverviewPage() {
         <StatCard 
           title="Incoming Referrals" 
           value={incomingCount} 
-          icon={<ArrowDownRight className="w-5 h-5 text-blue-600" />}
+          icon={<ArrowDownRight className="w-5 h-5 text-info-600" />}
           trend="+2"
           trendDirection="up"
         />
         <StatCard 
           title="Outgoing Referrals" 
           value={outgoingCount} 
-          icon={<ArrowUpRight className="w-5 h-5 text-teal-600" />}
+          icon={<ArrowUpRight className="w-5 h-5 text-afya-600" />}
           trend="-1"
           trendDirection="down"
         />
         <StatCard 
           title="Pending Review" 
           value={pendingCount} 
-          icon={<Activity className="w-5 h-5 text-amber-600" />}
+          icon={<Activity className="w-5 h-5 text-warning-600" />}
         />
         <StatCard 
           title="Urgent Referrals" 
           value={urgentCount} 
-          icon={<ArrowRightLeft className="w-5 h-5 text-red-600" />}
+          icon={<ArrowRightLeft className="w-5 h-5 text-danger-600" />}
         />
       </div>
 
@@ -90,12 +90,12 @@ export default function ReferralsOverviewPage() {
                       <TableRow key={referral.id}>
                         <TableCell>
                           <div className="font-medium">{patient?.givenName} {patient?.familyName}</div>
-                          <div className="text-xs text-gray-500">{patient?.afyaPassId}</div>
+                          <div className="text-xs text-slate-500">{patient?.afyaPassId}</div>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-2 text-sm">
                             <span className="truncate max-w-[120px]">{source?.name}</span>
-                            <ArrowRightLeft className="w-3 h-3 text-gray-400 flex-shrink-0" />
+                            <ArrowRightLeft className="w-3 h-3 text-slate-400 flex-shrink-0" />
                             <span className="truncate max-w-[120px] font-medium">{target?.name}</span>
                           </div>
                         </TableCell>
@@ -128,7 +128,7 @@ export default function ReferralsOverviewPage() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center justify-center py-10 text-center space-y-4 bg-slate-50 rounded-lg border border-dashed border-slate-200">
-              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-info-100 text-info-600 rounded-full flex items-center justify-center">
                 <Activity className="w-8 h-8" />
               </div>
               <div>

@@ -32,12 +32,12 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
         <div className="flex items-start gap-4">
-          <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+          <div className="w-16 h-16 bg-info-50 text-info-600 rounded-lg flex items-center justify-center flex-shrink-0">
             <Building2 className="w-8 h-8" />
           </div>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-semibold text-gray-900">{facility.name}</h1>
+              <h1 className="text-2xl font-semibold text-slate-900">{facility.name}</h1>
               <Badge variant="outline" className="bg-slate-50">Level {facility.level}</Badge>
             </div>
             <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
@@ -59,7 +59,7 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
         <StatCard 
           title="Today's Patients" 
           value={todayPatients} 
-          icon={<Users className="w-5 h-5 text-blue-600" />}
+          icon={<Users className="w-5 h-5 text-info-600" />}
           trend="+12%"
           trendDirection="up"
         />
@@ -71,12 +71,12 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
         <StatCard 
           title="Pending Referrals" 
           value={referralsPending.length} 
-          icon={<UserPlus className="w-5 h-5 text-amber-600" />}
+          icon={<UserPlus className="w-5 h-5 text-warning-600" />}
         />
         <StatCard 
           title="On-Duty Staff" 
           value={onDutyStaff} 
-          icon={<Users className="w-5 h-5 text-teal-600" />}
+          icon={<Users className="w-5 h-5 text-afya-600" />}
         />
       </div>
 
@@ -114,7 +114,7 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
                     ))}
                     {staff.length === 0 && (
                       <TableRow>
-                        <TableCell colSpan={5} className="text-center py-6 text-gray-500">
+                        <TableCell colSpan={5} className="text-center py-6 text-slate-500">
                           No staff members assigned to this facility.
                         </TableCell>
                       </TableRow>

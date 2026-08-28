@@ -13,8 +13,7 @@ import { formatDate } from '@/lib/utils';
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-6 p-6">
-      {/* Header */}
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-slate-900">Welcome back, Dr. James Kamau</h1>
@@ -22,7 +21,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link href="/patients/register">
-            <Button className="bg-afya-teal hover:bg-afya-teal-dark text-white shadow-sm">
+            <Button className="bg-afya-600 hover:bg-afya-700 text-white shadow-sm">
               <Plus className="w-4 h-4 mr-2" />
               Register Patient
             </Button>
@@ -38,21 +37,20 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Stat Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard 
           title="Total Patients" 
           value="28,450" 
           trend="+12.4% vs last week" 
           trendUp={true} 
-          icon={<Users className="w-5 h-5 text-afya-blue" />} 
+          icon={<Users className="w-5 h-5 text-info-600" />} 
         />
         <StatCard 
           title="Today's Encounters" 
           value="89" 
           trend="+8 today" 
           trendUp={true} 
-          icon={<Stethoscope className="w-5 h-5 text-afya-teal" />} 
+          icon={<Stethoscope className="w-5 h-5 text-afya-600" />} 
         />
         <StatCard 
           title="Active Referrals" 
@@ -70,9 +68,7 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Main Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column */}
         <div className="lg:col-span-8 flex flex-col gap-6">
           <Card>
             <CardHeader>
@@ -142,7 +138,6 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        {/* Right Column */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           <Card className="border-orange-200 bg-orange-50/50">
             <CardContent className="p-4 flex gap-4 items-start">
@@ -167,11 +162,11 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-3">
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <Plus className="w-5 h-5 text-afya-teal" />
+                <Plus className="w-5 h-5 text-afya-600" />
                 <span className="text-xs">Register Patient</span>
               </Button>
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
-                <Stethoscope className="w-5 h-5 text-afya-blue" />
+                <Stethoscope className="w-5 h-5 text-afya-600" />
                 <span className="text-xs">File Encounter</span>
               </Button>
               <Button variant="outline" className="h-auto py-4 flex flex-col gap-2 items-center justify-center">
@@ -196,7 +191,7 @@ export default function DashboardPage() {
                   <span className="text-slate-500 text-xs">Synced 2m ago</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2">
-                  <div className="bg-afya-teal h-2 rounded-full" style={{ width: '98%' }}></div>
+                  <div className="bg-afya-600 h-2 rounded-full" style={{ width: '98%' }}></div>
                 </div>
               </div>
               <div className="space-y-2">
@@ -205,13 +200,13 @@ export default function DashboardPage() {
                   <span className="text-slate-500 text-xs">Synced 5m ago</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2">
-                  <div className="bg-afya-teal h-2 rounded-full" style={{ width: '95%' }}></div>
+                  <div className="bg-afya-600 h-2 rounded-full" style={{ width: '95%' }}></div>
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="font-medium text-slate-700">Maragua</span>
-                  <span className="text-amber-600 text-xs">Syncing...</span>
+                  <span className="text-warning-600 text-xs">Syncing...</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2">
                   <div className="bg-amber-400 h-2 rounded-full" style={{ width: '65%' }}></div>

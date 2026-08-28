@@ -17,7 +17,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
   const patientEncounters = mockEncounters.filter((e: ClinicalEncounter) => e.patientId === patient.id) || mockEncounters;
 
   return (
-    <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full">
       {/* Header Banner */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
         <div className="flex items-start mb-4">
@@ -39,7 +39,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                   {patient.afyaPassId}
                 </Badge>
                 {patient.consentGranted && (
-                  <Badge variant="success" className="bg-green-100 text-green-800 hover:bg-green-100 flex gap-1 items-center">
+                  <Badge variant="success" className="bg-success-100 text-success-800 hover:bg-success-100 flex gap-1 items-center">
                     <ShieldCheck className="w-3 h-3" /> Consent Granted
                   </Badge>
                 )}
@@ -49,7 +49,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
                 <span>{patient.gender}</span>
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
-                <Badge variant="outline" className="text-xs text-red-600 border-red-200 bg-red-50">Blood: O+</Badge>
+                <Badge variant="outline" className="text-xs text-danger-600 border-danger-200 bg-danger-50">Blood: O+</Badge>
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
                 <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-slate-400" /> {patient.subCounty}, {patient.county}</span>
               </div>
@@ -65,7 +65,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
               <ArrowLeftRight className="w-4 h-4 mr-2" />
               Create Referral
             </Button>
-            <Button className="bg-afya-teal hover:bg-afya-teal-dark text-white shadow-sm">
+            <Button className="bg-afya-600 hover:bg-afya-700 text-white shadow-sm">
               <Plus className="w-4 h-4 mr-2" />
               New Encounter
             </Button>
@@ -80,7 +80,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
             <TabsTrigger 
               key={tab} 
               value={tab.toLowerCase()}
-              className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-afya-teal rounded-none px-1 py-3 text-sm font-medium text-slate-500 data-[state=active]:text-slate-900"
+              className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-afya-600 rounded-none px-1 py-3 text-sm font-medium text-slate-500 data-[state=active]:text-slate-900"
             >
               {tab}
             </TabsTrigger>
@@ -95,7 +95,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                 <CardHeader className="pb-3 border-b border-slate-100">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-base font-medium flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-afya-teal" />
+                      <MapPin className="w-4 h-4 text-afya-600" />
                       Cross-Facility Journey
                     </CardTitle>
                     <Badge variant="outline" className="text-xs bg-slate-50">Data Continuity Active</Badge>
@@ -105,8 +105,8 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                   <div className="relative pl-6 border-l-2 border-slate-200 space-y-8">
                     {patientEncounters.slice(0, 3).map((enc: ClinicalEncounter, idx: number) => (
                       <div key={idx} className="relative">
-                        <div className="absolute -left-[33px] p-1 bg-white border-2 border-afya-teal rounded-full">
-                          <Stethoscope className="w-3 h-3 text-afya-teal" />
+                        <div className="absolute -left-[33px] p-1 bg-white border-2 border-afya-600 rounded-full">
+                          <Stethoscope className="w-3 h-3 text-afya-600" />
                         </div>
                         <div className="bg-slate-50 border border-slate-100 rounded-lg p-4">
                           <div className="flex justify-between items-start mb-2">
@@ -157,7 +157,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
               <Card>
                 <CardHeader className="pb-3 border-b border-slate-100">
                   <CardTitle className="text-base font-medium flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-500" />
+                    <AlertTriangle className="w-4 h-4 text-warning-500" />
                     Active Allergies
                   </CardTitle>
                 </CardHeader>
@@ -165,11 +165,11 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-slate-900">Penicillin</span>
-                      <Badge variant="outline" className="text-xs text-red-600 bg-red-50 border-red-200">Severe</Badge>
+                      <Badge variant="outline" className="text-xs text-danger-600 bg-danger-50 border-danger-200">Severe</Badge>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-slate-900">Peanuts</span>
-                      <Badge variant="outline" className="text-xs text-amber-600 bg-amber-50 border-amber-200">Moderate</Badge>
+                      <Badge variant="outline" className="text-xs text-warning-600 bg-warning-50 border-warning-200">Moderate</Badge>
                     </div>
                   </div>
                 </CardContent>

@@ -33,15 +33,15 @@ export default function IncomingReferralsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Incoming Patient Referrals</h1>
-        <p className="text-sm text-gray-500 mt-1">Review and manage patients referred to your facility</p>
+        <h1 className="text-2xl font-semibold text-slate-900">Incoming Patient Referrals</h1>
+        <p className="text-sm text-slate-500 mt-1">Review and manage patients referred to your facility</p>
       </div>
 
       <Card>
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by patient name or ID..." 
                 className="pl-9"
@@ -105,7 +105,7 @@ export default function IncomingReferralsPage() {
                     <TableCell className="font-mono text-xs">{referral.id}</TableCell>
                     <TableCell>
                       <div className="font-medium">{patient?.givenName} {patient?.familyName}</div>
-                      <div className="text-xs text-gray-500">{patient?.afyaPassId}</div>
+                      <div className="text-xs text-slate-500">{patient?.afyaPassId}</div>
                     </TableCell>
                     <TableCell>{source?.name}</TableCell>
                     <TableCell>
@@ -115,7 +115,7 @@ export default function IncomingReferralsPage() {
                     </TableCell>
                     <TableCell>
                       <div className="text-sm">{new Date(referral.referralDate).toLocaleDateString()}</div>
-                      <div className="text-xs text-gray-500 truncate max-w-[200px]" title={referral.reason}>
+                      <div className="text-xs text-slate-500 truncate max-w-[200px]" title={referral.reason}>
                         {referral.reason}
                       </div>
                     </TableCell>
@@ -128,10 +128,10 @@ export default function IncomingReferralsPage() {
                       <div className="flex justify-end gap-2">
                         {referral.status === 'Pending' ? (
                           <>
-                            <Button size="sm" variant="outline" className="text-green-600 border-green-200 hover:bg-green-50">
+                            <Button size="sm" variant="outline" className="text-success-600 border-success-200 hover:bg-success-50">
                               <CheckCircle className="w-4 h-4 mr-1" /> Accept
                             </Button>
-                            <Button size="sm" variant="outline" className="text-red-600 border-red-200 hover:bg-red-50">
+                            <Button size="sm" variant="outline" className="text-danger-600 border-danger-200 hover:bg-danger-50">
                               <XCircle className="w-4 h-4 mr-1" /> Decline
                             </Button>
                           </>
@@ -147,7 +147,7 @@ export default function IncomingReferralsPage() {
               })}
               {filtered.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={7} className="text-center py-8 text-slate-500">
                     No incoming referrals found matching your criteria.
                   </TableCell>
                 </TableRow>

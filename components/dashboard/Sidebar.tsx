@@ -130,7 +130,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Header Area */}
       <div className="h-16 flex items-center px-6 border-b border-slate-800 shrink-0 sticky top-0 bg-slate-900 z-10 justify-between">
         <Link href="/dashboard" className="flex items-center gap-2 text-white">
-          <IcActivity className="h-6 w-6 text-teal-500" />
+          <IcActivity className="h-6 w-6 text-afya-500" />
           <span className="font-bold text-lg">AfyaPass</span>
         </Link>
         <button className="lg:hidden text-slate-400 hover:text-white" onClick={onClose}>
@@ -141,7 +141,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Navigation */}
       <nav className="flex-1 px-4 py-6 space-y-8">
         {navGroups.map((group, i) => {
-          // Filter items based on current role permissions
           const visibleItems = group.items.filter(item => {
             if (item.allowedRoles && !item.allowedRoles.includes(currentRole)) {
               return false;
@@ -178,7 +177,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                       )}
                     >
                       {isActive && (
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-teal-500 rounded-r-full" />
+                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-afya-500 rounded-r-full" />
                       )}
                       <Icon className="h-5 w-5 shrink-0" />
                       {item.label}
@@ -191,7 +190,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         })}
       </nav>
 
-      {/* Bottom Profile & Role Switcher */}
       <div className="p-4 border-t border-slate-800 shrink-0 sticky bottom-0 bg-slate-900">
         {showRoleSelector && (
           <div className="mb-3 bg-slate-800 rounded-lg p-2 border border-slate-700 space-y-1 shadow-lg animate-fade-in">
@@ -205,7 +203,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 }}
                 className={cn(
                   "w-full text-left px-2 py-1.5 rounded text-xs flex items-center justify-between transition-colors",
-                  currentRole === r ? "bg-teal-600 text-white font-medium" : "text-slate-300 hover:bg-slate-700"
+                  currentRole === r ? "bg-afya-600 text-white font-medium" : "text-slate-300 hover:bg-slate-700"
                 )}
               >
                 <span>{demoProfiles[r].title}</span>
@@ -219,11 +217,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           onClick={() => setShowRoleSelector(!showRoleSelector)}
           className="w-full flex items-center gap-3 p-1.5 rounded-lg hover:bg-slate-800 transition-colors text-left group focus:outline-none"
         >
-          <div className="h-10 w-10 rounded-full bg-teal-700 text-teal-100 flex items-center justify-center font-bold shrink-0 shadow-inner">
+          <div className="h-10 w-10 rounded-full bg-afya-700 text-afya-100 flex items-center justify-center font-bold shrink-0 shadow-inner">
             {activeProfile.initials}
           </div>
           <div className="overflow-hidden flex-1 min-w-0">
-            <p className="text-sm font-medium text-white truncate group-hover:text-teal-400 transition-colors">{activeProfile.name}</p>
+            <p className="text-sm font-medium text-white truncate group-hover:text-afya-400 transition-colors">{activeProfile.name}</p>
             <p className="text-xs text-slate-400 truncate">{activeProfile.title}</p>
             <p className="text-[10px] text-slate-500 truncate mt-0.5">{activeProfile.facility}</p>
           </div>

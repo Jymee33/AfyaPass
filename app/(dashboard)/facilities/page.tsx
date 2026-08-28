@@ -37,8 +37,8 @@ export default function FacilitiesDirectoryPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Murang'a County Facility Registry</h1>
-          <p className="text-sm text-gray-500 mt-1">Directory of all registered healthcare facilities in the county</p>
+          <h1 className="text-2xl font-semibold text-slate-900">Murang'a County Facility Registry</h1>
+          <p className="text-sm text-slate-500 mt-1">Directory of all registered healthcare facilities in the county</p>
         </div>
         <Button className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -55,7 +55,7 @@ export default function FacilitiesDirectoryPage() {
         <StatCard 
           title="Public Facilities" 
           value={publicCount} 
-          icon={<Building2 className="w-5 h-5 text-blue-600" />}
+          icon={<Building2 className="w-5 h-5 text-info-600" />}
         />
         <StatCard 
           title="Private & Faith-Based" 
@@ -65,7 +65,7 @@ export default function FacilitiesDirectoryPage() {
         <StatCard 
           title="Digital Sync Rate" 
           value={`${syncRate}%`} 
-          icon={<WifiHigh className="w-5 h-5 text-green-600" />}
+          icon={<WifiHigh className="w-5 h-5 text-success-600" />}
           trend="+4%"
           trendDirection="up"
         />
@@ -75,7 +75,7 @@ export default function FacilitiesDirectoryPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search facility name or MFL code..." 
                 className="pl-9"
@@ -171,7 +171,7 @@ export default function FacilitiesDirectoryPage() {
               ))}
               {filtered.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={7} className="text-center py-8 text-slate-500">
                     No facilities found matching your criteria.
                   </TableCell>
                 </TableRow>

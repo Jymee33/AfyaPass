@@ -30,7 +30,7 @@ export default function RegisterPatientPage() {
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6 max-w-4xl mx-auto w-full">
+    <div className="flex flex-col gap-6 max-w-4xl mx-auto w-full">
       {/* Breadcrumbs */}
       <div className="flex items-center text-sm text-slate-500 gap-2">
         <Link href="/dashboard" className="hover:text-slate-900">Dashboard</Link>
@@ -128,10 +128,10 @@ export default function RegisterPatientPage() {
           </CardContent>
         </Card>
 
-        <Card className="mb-6 border-afya-teal/20 bg-afya-teal/5">
+        <Card className="mb-6 border-afya-600/20 bg-afya-600/5">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <div className="bg-afya-teal/10 p-3 rounded-full text-afya-teal">
+              <div className="bg-afya-600/10 p-3 rounded-full text-afya-600">
                 <Shield className="w-6 h-6" />
               </div>
               <div>
@@ -140,7 +140,7 @@ export default function RegisterPatientPage() {
                   By checking this box, you confirm that the patient has given explicit consent for their medical records to be shared securely across authorized AfyaPass facilities within the county network.
                 </p>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" required className="rounded border-slate-300 text-afya-teal focus:ring-afya-teal" checked={formData.consent} onChange={(e) => setFormData({...formData, consent: e.target.checked})} />
+                  <input type="checkbox" required className="rounded border-slate-300 text-afya-600 focus:ring-afya-600" checked={formData.consent} onChange={(e) => setFormData({...formData, consent: e.target.checked})} />
                   <span className="text-sm font-medium text-slate-700">Patient grants cross-facility data sharing consent</span>
                 </label>
               </div>
@@ -160,7 +160,7 @@ export default function RegisterPatientPage() {
             <Link href="/patients">
               <Button type="button" variant="outline">Cancel</Button>
             </Link>
-            <Button type="submit" className="bg-afya-teal hover:bg-afya-teal-dark text-white">
+            <Button type="submit" className="bg-afya-600 hover:bg-afya-700 text-white">
               Register & Issue ID
             </Button>
           </div>

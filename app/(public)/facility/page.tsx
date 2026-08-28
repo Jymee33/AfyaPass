@@ -33,7 +33,7 @@ export default function FacilityPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs bg-slate-800 px-3 py-2 rounded-lg border border-slate-700">
-            <ShieldAlert className="w-4 h-4 text-emerald-400" />
+            <ShieldAlert className="w-4 h-4 text-success-500" />
             <span>RLS Active: Audit Logging Enforced</span>
           </div>
         </div>
@@ -71,22 +71,22 @@ export default function FacilityPage() {
                 <div
                   className={`p-4 rounded-xl border text-xs ${
                     scanResult.success
-                      ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
-                      : 'bg-red-50 border-red-200 text-red-900'
+                      ? 'bg-success-50 border-success-200 text-success-800'
+                      : 'bg-danger-50 border-danger-200 text-danger-900'
                   }`}
                 >
                   {scanResult.success ? (
                     <div className="space-y-1">
-                      <div className="font-bold flex items-center gap-1 text-emerald-800">
+                      <div className="font-bold flex items-center gap-1 text-success-800">
                         <CheckCircle className="w-4 h-4" /> Valid AfyaPass Patient ID Verified
                       </div>
                       <p className="font-mono font-semibold">Patient ID: {scanResult.id}</p>
-                      <p className="text-[11px] text-emerald-700">
+                      <p className="text-[11px] text-success-700">
                         Opaque reference resolved via Supabase RLS. Active consent detected.
                       </p>
                     </div>
                   ) : (
-                    <div className="font-semibold flex items-center gap-1 text-red-800">
+                    <div className="font-semibold flex items-center gap-1 text-danger-800">
                       <AlertTriangle className="w-4 h-4" /> {scanResult.error}
                     </div>
                   )}
@@ -94,9 +94,9 @@ export default function FacilityPage() {
               )}
             </div>
 
-            <div className="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-amber-900 space-y-2">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4 text-amber-600" />
+            <div className="bg-warning-50 p-5 rounded-2xl border border-warning-200 text-warning-800 space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-warning-800 flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 text-warning-600" />
                 Emergency Access Protocol
               </h3>
               <p className="text-xs leading-relaxed">
@@ -105,7 +105,7 @@ export default function FacilityPage() {
               <button
                 type="button"
                 onClick={() => alert('Emergency access override requested. High-priority audit log entry generated.')}
-                className="w-full mt-2 py-2 px-3 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-lg transition-colors"
+                className="w-full mt-2 py-2 px-3 bg-warning-600 hover:bg-warning-700 text-white text-xs font-bold rounded-lg transition-colors"
               >
                 Trigger Emergency Override
               </button>
