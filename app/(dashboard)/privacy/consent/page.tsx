@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { mockPatients, mockFacilities } from '@/lib/mock-data';
-import { Shield, ShieldAlert, History, AlertTriangle } from 'lucide-react';
+import { Shield, History, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 
 export default function ConsentManagementPage() {

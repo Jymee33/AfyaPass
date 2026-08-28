@@ -9,9 +9,9 @@
  */
 
 import { 
-  Role, AfyaPassID, PatientProfile, HealthcareFacility, HealthcareWorker, 
-  ClinicalEncounter, AuditLogEntry, QrPayload, VitalSigns, Medication, 
-  Diagnosis, LabOrder, Referral, Allergy, ActivityEvent, NavigationItem
+  PatientProfile, HealthcareFacility, HealthcareWorker, 
+  ClinicalEncounter, VitalSigns, Medication, 
+  Diagnosis, LabOrder, Referral, Allergy, ActivityEvent
 } from '@/types';
 
 // --- MOCK FACILITIES ---

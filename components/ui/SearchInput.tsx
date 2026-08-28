@@ -5,15 +5,15 @@ import { Input } from './Input';
 
 export interface SearchInputProps {
   placeholder?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string) => void;
   onClear?: () => void;
   className?: string;
 }
 
 export function SearchInput({
   placeholder = 'Search...',
-  value,
+  value = '',
   onChange,
   onClear,
   className,
@@ -24,7 +24,7 @@ export function SearchInput({
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange?.(e.target.value)}
         icon={Search}
         className={value && onClear ? 'pr-10' : ''}
       />

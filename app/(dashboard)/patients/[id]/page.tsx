@@ -6,14 +6,15 @@ import { Badge } from '@/components/ui/Badge';
 import { Avatar } from '@/components/ui/Avatar';
 import { ChevronLeft, QrCode, Plus, ArrowLeftRight, Clock, MapPin, Activity, Stethoscope, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { mockPatients, mockEncounters } from '@/lib/mock-data';
+import { PatientProfile, ClinicalEncounter } from '@/types';
 import { getInitials, formatDate } from '@/lib/utils';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 
 export default async function PatientProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   // MOCK DATA — Replace with Supabase query when backend integration is implemented
-  const patient = mockPatients.find((p: any) => p.id === resolvedParams.id) || mockPatients[0];
-  const patientEncounters = mockEncounters.filter((e: any) => e.patientId === patient.id) || mockEncounters;
+  const patient = mockPatients.find((p: PatientProfile) => p.id === resolvedParams.id) || mockPatients[0];
+  const patientEncounters = mockEncounters.filter((e: ClinicalEncounter) => e.patientId === patient.id) || mockEncounters;
 
   return (
     <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full">
@@ -29,15 +30,15 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6">
           <div className="flex items-start gap-5">
             <Avatar className="w-20 h-20 text-xl bg-slate-100 text-slate-600 rounded-full border-2 border-white shadow-sm">
-              {getInitials(patient.firstName + ' ' + patient.lastName)}
+              {getInitials(patient.givenName + ' ' + patient.familyName)}
             </Avatar>
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <h1 className="text-2xl font-semibold text-slate-900">{patient.firstName} {patient.lastName}</h1>
+                <h1 className="text-2xl font-semibold text-slate-900">{patient.givenName} {patient.familyName}</h1>
                 <Badge variant="outline" className="font-mono text-xs bg-slate-50 font-medium tracking-wider">
-                  {patient.afyapassId}
+                  {patient.afyaPassId}
                 </Badge>
-                {patient.consentStatus === 'Granted' && (
+                {patient.consentGranted && (
                   <Badge variant="success" className="bg-green-100 text-green-800 hover:bg-green-100 flex gap-1 items-center">
                     <ShieldCheck className="w-3 h-3" /> Consent Granted
                   </Badge>
@@ -102,7 +103,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                 </CardHeader>
                 <CardContent className="pt-6">
                   <div className="relative pl-6 border-l-2 border-slate-200 space-y-8">
-                    {patientEncounters.slice(0, 3).map((enc: any, idx: number) => (
+                    {patientEncounters.slice(0, 3).map((enc: ClinicalEncounter, idx: number) => (
                       <div key={idx} className="relative">
                         <div className="absolute -left-[33px] p-1 bg-white border-2 border-afya-teal rounded-full">
                           <Stethoscope className="w-3 h-3 text-afya-teal" />
@@ -110,12 +111,12 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                         <div className="bg-slate-50 border border-slate-100 rounded-lg p-4">
                           <div className="flex justify-between items-start mb-2">
                             <div>
-                              <h4 className="font-medium text-slate-900 text-sm">{enc.type || 'Outpatient Visit'}</h4>
-                              <p className="text-xs text-slate-500 mt-1">{enc.facilityName}</p>
+                              <h4 className="font-medium text-slate-900 text-sm">{enc.encounterType || 'Outpatient Visit'}</h4>
+                              <p className="text-xs text-slate-500 mt-1">Facility: {enc.facilityId}</p>
                             </div>
-                            <span className="text-xs text-slate-500">{formatDate(enc.date)}</span>
+                            <span className="text-xs text-slate-500">{formatDate(enc.encounterDate)}</span>
                           </div>
-                          <p className="text-sm text-slate-700 mt-2">{enc.notes || 'Routine checkup completed.'}</p>
+                          <p className="text-sm text-slate-700 mt-2">{enc.summaryNote || 'Routine checkup completed.'}</p>
                         </div>
                       </div>
                     ))}

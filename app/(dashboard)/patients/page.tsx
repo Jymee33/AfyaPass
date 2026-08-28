@@ -8,6 +8,7 @@ import { Avatar } from '@/components/ui/Avatar';
 import { Card } from '@/components/ui/Card';
 import { Search, Plus, Filter, ArrowUpDown } from 'lucide-react';
 import { mockPatients } from '@/lib/mock-data';
+import { PatientProfile } from '@/types';
 import { getInitials } from '@/lib/utils';
 
 export default function PatientsPage() {
@@ -77,22 +78,22 @@ export default function PatientsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {mockPatients.map((patient: any) => (
+              {mockPatients.map((patient: PatientProfile) => (
                 <tr key={patient.id} className="hover:bg-slate-50/80 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <Avatar className="h-9 w-9 bg-slate-100 text-slate-600">
-                        {getInitials(patient.firstName + ' ' + patient.lastName)}
+                        {getInitials(patient.givenName + ' ' + patient.familyName)}
                       </Avatar>
                       <div>
-                        <div className="font-medium text-slate-900">{patient.firstName} {patient.lastName}</div>
+                        <div className="font-medium text-slate-900">{patient.givenName} {patient.familyName}</div>
                         <div className="text-xs text-slate-500">{patient.gender}</div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <Badge variant="outline" className="font-mono text-xs bg-slate-50">
-                      {patient.afyapassId}
+                      {patient.afyaPassId}
                     </Badge>
                   </td>
                   <td className="px-6 py-4 text-slate-600">
@@ -103,8 +104,8 @@ export default function PatientsPage() {
                     <div className="text-xs text-slate-500">{patient.county}</div>
                   </td>
                   <td className="px-6 py-4">
-                    <Badge variant={patient.consentStatus === 'Granted' ? 'success' : 'default'} className="text-xs">
-                      {patient.consentStatus || 'Granted'}
+                    <Badge variant={patient.consentGranted ? 'success' : 'default'} className="text-xs">
+                      {patient.consentGranted ? 'Granted' : 'Revoked'}
                     </Badge>
                   </td>
                   <td className="px-6 py-4">

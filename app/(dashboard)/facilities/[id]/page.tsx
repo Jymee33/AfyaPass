@@ -25,8 +25,8 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
 
   // Mock KPIs
   const todayPatients = 142; // MOCK DATA
-  const activeEncounters = 89; // MOCK DATA
-  const onDutyStaff = 48; // MOCK DATA
+  const activeEncounters = encounters.length || 89; // MOCK DATA
+  const onDutyStaff = staff.length || 48; // MOCK DATA
 
   return (
     <div className="space-y-6">

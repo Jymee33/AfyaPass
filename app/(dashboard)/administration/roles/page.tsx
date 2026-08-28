@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
@@ -135,7 +137,7 @@ export default function RolesPermissionsPage() {
                 {role.id === 'county_admin' && "High-level administrators overseeing the county pilot, cross-facility performance, and global settings."}
                 {role.id === 'system_auditor' && "Security personnel tasked with reviewing access logs, emergency overrides, and compliance."}
               </p>
-              <Badge variant="outline" className="bg-slate-50">Role ID: {role.id}</Badge>
+              <Badge variant="neutral" className="bg-slate-50">Role ID: {role.id}</Badge>
             </CardContent>
           </Card>
         ))}

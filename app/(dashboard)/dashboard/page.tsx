@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
@@ -5,7 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { StatCard } from '@/components/ui/StatCard';
 import { Users, Stethoscope, ArrowLeftRight, FlaskConical, Plus, QrCode, AlertTriangle } from 'lucide-react';
-import { dashboardStats, mockActivityEvents } from '@/lib/mock-data';
+import { mockActivityEvents } from '@/lib/mock-data';
+import { ActivityEvent } from '@/types';
 import { formatDate } from '@/lib/utils';
 
 export default function DashboardPage() {
@@ -114,7 +117,7 @@ export default function DashboardPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {mockActivityEvents.slice(0, 5).map((event: any) => (
+                    {mockActivityEvents.slice(0, 5).map((event: ActivityEvent) => (
                       <tr key={event.id} className="hover:bg-slate-50/50">
                         <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{formatDate(event.timestamp)}</td>
                         <td className="px-4 py-3">
@@ -123,8 +126,8 @@ export default function DashboardPage() {
                           </Badge>
                         </td>
                         <td className="px-4 py-3 font-medium text-slate-900">{event.patientName}</td>
-                        <td className="px-4 py-3 text-slate-500">{event.facilityName || event.facility}</td>
-                        <td className="px-4 py-3 text-slate-500">{event.actorName || event.actor}</td>
+                        <td className="px-4 py-3 text-slate-500">{event.facilityName}</td>
+                        <td className="px-4 py-3 text-slate-500">{event.actorName}</td>
                         <td className="px-4 py-3">
                           <Badge variant={event.status === 'success' ? 'success' : 'default'} className="text-[10px] uppercase">
                             {event.status || 'Success'}

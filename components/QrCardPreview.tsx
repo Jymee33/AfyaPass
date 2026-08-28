@@ -6,14 +6,19 @@ import { QrCode, ShieldCheck } from 'lucide-react';
 interface QrCardPreviewProps {
   patientName?: string;
   afyaPassId?: string;
+  patientId?: string;
   county?: string;
+  facilityName?: string;
 }
 
 export function QrCardPreview({
   patientName = "Demo Patient",
-  afyaPassId = "AFY-KE-MUR-2026-98421",
+  afyaPassId,
+  patientId = "AFY-KE-MUR-2026-98421",
   county = "Murang'a County",
+  facilityName,
 }: QrCardPreviewProps) {
+  const displayId = afyaPassId || patientId;
   return (
     <div className="w-full max-w-md mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-afya-950 p-6 rounded-2xl border border-slate-700 shadow-xl text-white relative overflow-hidden">
       <div className="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
@@ -40,7 +45,7 @@ export function QrCardPreview({
           <div>
             <div className="text-[10px] uppercase font-semibold text-slate-400">AfyaPass Patient ID</div>
             <div className="text-xs font-mono font-bold text-afya-700 tracking-wider">
-              {afyaPassId}
+              {displayId}
             </div>
           </div>
 

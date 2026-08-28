@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'danger' | 'destructive' | 'default';
+  size?: 'sm' | 'md' | 'lg' | 'icon';
   icon?: LucideIcon;
   loading?: boolean;
 }
@@ -15,16 +15,19 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     const variants = {
       primary: 'bg-afya-600 text-white hover:bg-afya-700 focus-visible:ring-afya-600',
+      default: 'bg-afya-600 text-white hover:bg-afya-700 focus-visible:ring-afya-600',
       secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200 focus-visible:ring-slate-500',
       ghost: 'hover:bg-slate-100 text-slate-700 hover:text-slate-900 focus-visible:ring-slate-500',
       outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 focus-visible:ring-slate-500',
       danger: 'bg-danger-600 text-white hover:bg-danger-700 focus-visible:ring-danger-600',
+      destructive: 'bg-danger-600 text-white hover:bg-danger-700 focus-visible:ring-danger-600',
     };
 
     const sizes = {
       sm: 'h-8 px-3 text-xs rounded-md',
       md: 'h-10 px-4 py-2 text-sm rounded-md',
       lg: 'h-12 px-8 text-base rounded-lg',
+      icon: 'h-10 w-10 p-2 rounded-md',
     };
 
     return (

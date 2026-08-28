@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -11,18 +13,18 @@ import { mockPatients } from '@/lib/mock-data';
 const mockIssuedCards = [
   {
     id: 'CRD-982-124',
-    patientName: mockPatients[0].first_name + ' ' + mockPatients[0].last_name,
-    afyaPassId: mockPatients[0].national_id,
-    issueDate: '2023-11-15',
-    facility: 'Nairobi Hospital',
+    patientName: mockPatients[0].givenName + ' ' + mockPatients[0].familyName,
+    afyaPassId: mockPatients[0].afyaPassId,
+    issueDate: '2026-08-15',
+    facility: "Murang'a Level 5 Hospital",
     status: 'Active'
   },
   {
     id: 'CRD-451-992',
-    patientName: mockPatients[1].first_name + ' ' + mockPatients[1].last_name,
-    afyaPassId: mockPatients[1].national_id,
-    issueDate: '2023-12-02',
-    facility: 'Kenyatta National Hospital',
+    patientName: mockPatients[1].givenName + ' ' + mockPatients[1].familyName,
+    afyaPassId: mockPatients[1].afyaPassId,
+    issueDate: '2026-08-02',
+    facility: 'Kangema Sub-County Hospital',
     status: 'Active'
   },
   {

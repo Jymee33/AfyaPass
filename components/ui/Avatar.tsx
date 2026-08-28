@@ -2,13 +2,13 @@ import React from 'react';
 import { cn, getInitials } from '@/lib/utils';
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string;
+  name?: string;
   src?: string;
   size?: 'sm' | 'md' | 'lg';
   status?: 'online' | 'offline' | 'busy';
 }
 
-export function Avatar({ className, name, src, size = 'md', status, ...props }: AvatarProps) {
+export function Avatar({ className, name = 'User', src, size = 'md', status, children, ...props }: AvatarProps) {
   const sizes = {
     sm: 'w-8 h-8 text-xs',
     md: 'w-10 h-10 text-sm',
@@ -61,7 +61,7 @@ export function Avatar({ className, name, src, size = 'md', status, ...props }: 
         {src ? (
           <img src={src} alt={name} className="w-full h-full object-cover" />
         ) : (
-          getInitials(name)
+          children || getInitials(name)
         )}
       </div>
       {status && (

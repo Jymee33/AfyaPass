@@ -183,6 +183,7 @@ export interface ActivityEvent {
   facilityName: string;
   actorName?: string;
   actorRole?: Role;
+  status?: string;
 }
 
 export type NavigationItem = {
