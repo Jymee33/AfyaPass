@@ -133,7 +133,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           <IcActivity className="h-6 w-6 text-afya-500" />
           <span className="font-bold text-lg">AfyaPass</span>
         </Link>
-        <button className="lg:hidden text-slate-400 hover:text-white" onClick={onClose}>
+        <button className="lg:hidden text-slate-400 hover:text-white" onClick={onClose} aria-label="Close menu">
           <IcChevronLeft className="h-5 w-5" />
         </button>
       </div>
@@ -207,7 +207,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 )}
               >
                 <span>{demoProfiles[r].title}</span>
-                {currentRole === r && <IcCheck className="w-3.5 h-3.5" />}
+                {currentRole === r && <IcCheck className="h-4 w-4" />}
               </button>
             ))}
           </div>

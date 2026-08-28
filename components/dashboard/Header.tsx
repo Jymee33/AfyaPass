@@ -15,6 +15,7 @@ export function Header({ onMenuClick }: HeaderProps) {
         <button 
           onClick={onMenuClick}
           className="lg:hidden p-2 -ml-2 text-slate-500 hover:text-slate-900 focus:outline-none"
+          aria-label="Open menu"
         >
           <IcMenu className="h-6 w-6" />
         </button>
@@ -41,7 +42,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           New Patient
         </Link>
         
-        <button className="relative p-2 text-slate-400 hover:text-slate-600 focus:outline-none">
+        <button className="relative p-2 text-slate-400 hover:text-slate-600 focus:outline-none" aria-label="Notifications">
           <IcBell className="h-6 w-6" />
           <span className="absolute top-1.5 right-1.5 block h-2.5 w-2.5 rounded-full bg-danger-500 ring-2 ring-white" />
         </button>
