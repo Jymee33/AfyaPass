@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { mockPatients, mockFacilities } from '@/lib/mock-data';
-import { Shield, History, AlertTriangle } from 'lucide-react';
+import { IcShield, IcHistory, IcAlert } from '@/components/icons';
 import { Badge } from '@/components/ui/Badge';
 
 export default function ConsentManagementPage() {
@@ -24,7 +24,7 @@ export default function ConsentManagementPage() {
       </div>
 
       <div className="bg-info-50 border border-info-200 rounded-lg p-4 flex gap-4 items-start">
-        <Shield className="w-6 h-6 text-info-600 flex-shrink-0 mt-0.5" />
+        <IcShield className="w-6 h-6 text-info-600 flex-shrink-0 mt-0.5" />
         <div>
           <h3 className="font-medium text-info-800">Security Architecture Notice</h3>
           <p className="text-sm text-info-800 mt-1">
@@ -84,7 +84,7 @@ export default function ConsentManagementPage() {
                           </TableCell>
                           <TableCell className="text-right">
                             <Badge variant="outline" className="bg-slate-50 text-slate-600">
-                              <History className="w-3 h-3 mr-1" /> 0
+                              <IcHistory className="h-4 w-4 mr-1" /> 0
                             </Badge>
                           </TableCell>
                         </TableRow>
@@ -129,7 +129,7 @@ export default function ConsentManagementPage() {
           
           <Card className="border-warning-200 bg-warning-50">
             <CardContent className="p-4 flex gap-3">
-              <AlertTriangle className="w-5 h-5 text-warning-600 flex-shrink-0" />
+              <IcAlert className="w-5 h-5 text-warning-600 flex-shrink-0" />
               <div className="text-sm text-warning-800">
                 <strong>Important:</strong> Changes to consent policies take effect immediately across all connected KHIE nodes. Ensure patient understands implications before toggling access.
               </div>

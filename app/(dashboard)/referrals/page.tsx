@@ -7,7 +7,7 @@ import { StatCard } from '@/components/ui/StatCard';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { mockReferrals, mockFacilities, mockPatients } from '@/lib/mock-data';
-import { Plus, ArrowRightLeft, ArrowDownRight, ArrowUpRight, Activity } from 'lucide-react';
+import { IcPlus, IcArrows, IcArrowIncoming, IcArrowOutgoing, IcActivity } from '@/components/icons';
 import Link from 'next/link';
 
 export default function ReferralsOverviewPage() {
@@ -24,7 +24,7 @@ export default function ReferralsOverviewPage() {
           <p className="text-sm text-slate-500 mt-1">Manage and track patient transfers across facilities</p>
         </div>
         <Button className="flex items-center gap-2">
-          <Plus className="w-4 h-4" />
+          <IcPlus className="w-4 h-4" />
           Create New Referral
         </Button>
       </div>
@@ -33,26 +33,26 @@ export default function ReferralsOverviewPage() {
         <StatCard 
           title="Incoming Referrals" 
           value={incomingCount} 
-          icon={<ArrowDownRight className="w-5 h-5 text-info-600" />}
+          icon={<IcArrowIncoming className="w-5 h-5 text-info-600" />}
           trend="+2"
           trendDirection="up"
         />
         <StatCard 
           title="Outgoing Referrals" 
           value={outgoingCount} 
-          icon={<ArrowUpRight className="w-5 h-5 text-afya-600" />}
+          icon={<IcArrowOutgoing className="w-5 h-5 text-afya-600" />}
           trend="-1"
           trendDirection="down"
         />
         <StatCard 
           title="Pending Review" 
           value={pendingCount} 
-          icon={<Activity className="w-5 h-5 text-warning-600" />}
+          icon={<IcActivity className="w-5 h-5 text-warning-600" />}
         />
         <StatCard 
           title="Urgent Referrals" 
           value={urgentCount} 
-          icon={<ArrowRightLeft className="w-5 h-5 text-danger-600" />}
+          icon={<IcArrows className="w-5 h-5 text-danger-600" />}
         />
       </div>
 
@@ -95,7 +95,7 @@ export default function ReferralsOverviewPage() {
                         <TableCell>
                           <div className="flex items-center gap-2 text-sm">
                             <span className="truncate max-w-[120px]">{source?.name}</span>
-                            <ArrowRightLeft className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                            <IcArrows className="h-4 w-4 text-slate-400 flex-shrink-0" />
                             <span className="truncate max-w-[120px] font-medium">{target?.name}</span>
                           </div>
                         </TableCell>
@@ -129,7 +129,7 @@ export default function ReferralsOverviewPage() {
           <CardContent>
             <div className="flex flex-col items-center justify-center py-10 text-center space-y-4 bg-slate-50 rounded-lg border border-dashed border-slate-200">
               <div className="w-16 h-16 bg-info-100 text-info-600 rounded-full flex items-center justify-center">
-                <Activity className="w-8 h-8" />
+                <IcActivity className="h-6 w-6" />
               </div>
               <div>
                 <p className="text-sm font-medium text-slate-900">Map view is loading</p>

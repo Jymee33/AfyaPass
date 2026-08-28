@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { SearchInput } from '@/components/ui/SearchInput';
 import { Select } from '@/components/ui/Select';
-import { FileText, Printer } from 'lucide-react';
+import { IcFileText, IcPrint } from '@/components/icons';
 import { mockLabOrders } from '@/lib/mock-data';
 
 export default function LabResultsPage() {
@@ -84,11 +84,11 @@ export default function LabResultsPage() {
                   </td>
                   <td className="py-3 px-4 text-sm text-right">
                     <div className="flex justify-end gap-2">
-                      <Button variant="ghost" size="sm" title="View Report">
-                        <FileText className="w-4 h-4 text-slate-500" />
+                      <Button variant="ghost" size="sm" title="View Report" aria-label="View Report">
+                        <IcFileText className="w-4 h-4 text-slate-500" />
                       </Button>
-                      <Button variant="ghost" size="sm" title="Print Report">
-                        <Printer className="w-4 h-4 text-slate-500" />
+                      <Button variant="ghost" size="sm" title="Print Report" aria-label="Print Report">
+                        <IcPrint className="w-4 h-4 text-slate-500" />
                       </Button>
                     </div>
                   </td>

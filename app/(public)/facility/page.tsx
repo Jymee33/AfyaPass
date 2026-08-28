@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Stethoscope, QrCode, Search, ShieldAlert, FilePlus, AlertTriangle, CheckCircle } from 'lucide-react';
+import { IcStethoscope, IcQr, IcSearch, IcShieldAlert, IcFilePlus, IcAlert, IcCheckCircle } from '@/components/icons';
 import { parseAfyaPassQrCode } from '@/lib/qr';
 
 export default function FacilityPage() {
@@ -24,7 +24,7 @@ export default function FacilityPage() {
         <div className="bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 bg-afya-500/20 text-afya-300 rounded-full border border-afya-500/30 mb-2">
-              <Stethoscope className="w-3.5 h-3.5" />
+              <IcStethoscope className="h-4 w-4" />
               <span>Healthcare Worker & Facility Portal</span>
             </div>
             <h1 className="text-2xl font-bold">Murang'a Level 5 Hospital — Clinical Desk</h1>
@@ -33,7 +33,7 @@ export default function FacilityPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs bg-slate-800 px-3 py-2 rounded-lg border border-slate-700">
-            <ShieldAlert className="w-4 h-4 text-success-500" />
+            <IcShieldAlert className="w-4 h-4 text-success-500" />
             <span>RLS Active: Audit Logging Enforced</span>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function FacilityPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
               <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <QrCode className="w-5 h-5 text-afya-600" />
+                <IcQr className="w-5 h-5 text-afya-600" />
                 Scan QR Card or Enter Patient ID
               </h2>
               <p className="text-xs text-slate-500">
@@ -62,7 +62,7 @@ export default function FacilityPage() {
                     type="submit"
                     className="absolute right-2 top-2 px-3 py-1.5 bg-afya-600 hover:bg-afya-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
                   >
-                    <Search className="w-3.5 h-3.5" /> Lookup
+                    <IcSearch className="h-4 w-4" /> Lookup
                   </button>
                 </div>
               </form>
@@ -78,7 +78,7 @@ export default function FacilityPage() {
                   {scanResult.success ? (
                     <div className="space-y-1">
                       <div className="font-bold flex items-center gap-1 text-success-800">
-                        <CheckCircle className="w-4 h-4" /> Valid AfyaPass Patient ID Verified
+                        <IcCheckCircle className="w-4 h-4" /> Valid AfyaPass Patient ID Verified
                       </div>
                       <p className="font-mono font-semibold">Patient ID: {scanResult.id}</p>
                       <p className="text-[11px] text-success-700">
@@ -87,7 +87,7 @@ export default function FacilityPage() {
                     </div>
                   ) : (
                     <div className="font-semibold flex items-center gap-1 text-danger-800">
-                      <AlertTriangle className="w-4 h-4" /> {scanResult.error}
+                      <IcAlert className="w-4 h-4" /> {scanResult.error}
                     </div>
                   )}
                 </div>
@@ -96,7 +96,7 @@ export default function FacilityPage() {
 
             <div className="bg-warning-50 p-5 rounded-2xl border border-warning-200 text-warning-800 space-y-2">
               <h3 className="text-xs font-bold uppercase tracking-wider text-warning-800 flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4 text-warning-600" />
+                <IcAlert className="w-4 h-4 text-warning-600" />
                 Emergency Access Protocol
               </h3>
               <p className="text-xs leading-relaxed">
@@ -117,7 +117,7 @@ export default function FacilityPage() {
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                 <div>
                   <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <FilePlus className="w-5 h-5 text-afya-600" />
+                    <IcFilePlus className="w-5 h-5 text-afya-600" />
                     Record Clinical Encounter
                   </h2>
                   <p className="text-xs text-slate-500">

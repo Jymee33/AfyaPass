@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart3, Building2, Users, Activity, ShieldCheck, MapPin } from 'lucide-react';
+import { IcBarChart, IcHospital, IcUsers, IcActivity, IcShieldCheck, IcMapPin } from '@/components/icons';
 
 export default function CountyPage() {
   return (
@@ -8,7 +8,7 @@ export default function CountyPage() {
         <div className="bg-emerald-950 text-white p-6 rounded-2xl border border-emerald-900 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30 mb-2">
-              <MapPin className="w-3.5 h-3.5" />
+              <IcMapPin className="h-4 w-4" />
               <span>Murang'a County Health Department</span>
             </div>
             <h1 className="text-2xl font-bold">County Executive Dashboard & Facility Analytics</h1>
@@ -17,7 +17,7 @@ export default function CountyPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs bg-emerald-900 px-3 py-2 rounded-lg border border-emerald-800 text-emerald-200">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <IcShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Anonymized Data Stream</span>
           </div>
         </div>
@@ -26,7 +26,7 @@ export default function CountyPage() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-slate-500 uppercase">Registered Facilities</span>
-              <Building2 className="w-5 h-5 text-afya-600" />
+              <IcHospital className="w-5 h-5 text-afya-600" />
             </div>
             <div className="text-2xl font-bold text-slate-900">142</div>
             <div className="text-[11px] text-emerald-600 mt-1 font-medium">Public, Private & Faith-Based</div>
@@ -35,7 +35,7 @@ export default function CountyPage() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-slate-500 uppercase">Active AfyaPass IDs</span>
-              <Users className="w-5 h-5 text-afya-600" />
+              <IcUsers className="w-5 h-5 text-afya-600" />
             </div>
             <div className="text-2xl font-bold text-slate-900">28,450</div>
             <div className="text-[11px] text-emerald-600 mt-1 font-medium">+1,240 this week</div>
@@ -44,7 +44,7 @@ export default function CountyPage() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-slate-500 uppercase">Encounters Filed</span>
-              <Activity className="w-5 h-5 text-afya-600" />
+              <IcActivity className="w-5 h-5 text-afya-600" />
             </div>
             <div className="text-2xl font-bold text-slate-900">84,910</div>
             <div className="text-[11px] text-emerald-600 mt-1 font-medium">100% Audit Logged</div>
@@ -53,7 +53,7 @@ export default function CountyPage() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-slate-500 uppercase">Cross-Facility Visits</span>
-              <BarChart3 className="w-5 h-5 text-afya-600" />
+              <IcBarChart className="w-5 h-5 text-afya-600" />
             </div>
             <div className="text-2xl font-bold text-slate-900">34.2%</div>
             <div className="text-[11px] text-slate-500 mt-1 font-medium">Continuity Rate</div>

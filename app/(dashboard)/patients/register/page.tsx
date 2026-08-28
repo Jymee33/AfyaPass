@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
-import { ChevronRight, Shield, QrCode } from 'lucide-react';
+import { IcChevronRight, IcShield, IcQr } from '@/components/icons';
 
 export default function RegisterPatientPage() {
   const router = useRouter();
@@ -34,9 +34,9 @@ export default function RegisterPatientPage() {
       {/* Breadcrumbs */}
       <div className="flex items-center text-sm text-slate-500 gap-2">
         <Link href="/dashboard" className="hover:text-slate-900">Dashboard</Link>
-        <ChevronRight className="w-4 h-4" />
+        <IcChevronRight className="w-4 h-4" />
         <Link href="/patients" className="hover:text-slate-900">Patients</Link>
-        <ChevronRight className="w-4 h-4" />
+        <IcChevronRight className="w-4 h-4" />
         <span className="text-slate-900 font-medium">Register New Patient</span>
       </div>
 
@@ -132,7 +132,7 @@ export default function RegisterPatientPage() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="bg-afya-600/10 p-3 rounded-full text-afya-600">
-                <Shield className="w-6 h-6" />
+                <IcShield className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-medium text-slate-900 mb-1">Consent & Privacy</h3>
@@ -150,7 +150,7 @@ export default function RegisterPatientPage() {
 
         <div className="flex justify-between items-center bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
           <div className="flex items-center gap-3">
-            <QrCode className="w-8 h-8 text-slate-400" />
+            <IcQr className="w-8 h-8 text-slate-400" />
             <div>
               <div className="text-xs text-slate-500 font-medium">Generated AfyaPass ID</div>
               <div className="font-mono font-medium text-slate-900 tracking-wider">AFY-KE-MUR-2026-XXXXX</div>

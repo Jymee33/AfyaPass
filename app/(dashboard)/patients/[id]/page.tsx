@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Avatar } from '@/components/ui/Avatar';
-import { ChevronLeft, QrCode, Plus, ArrowLeftRight, Clock, MapPin, Activity, Stethoscope, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { IcChevronLeft, IcQr, IcPlus, IcArrowLeftRight, IcClock, IcMapPin, IcActivity, IcStethoscope, IcAlert, IcShieldCheck } from '@/components/icons';
 import { mockPatients, mockEncounters } from '@/lib/mock-data';
 import { PatientProfile, ClinicalEncounter } from '@/types';
 import { getInitials, formatDate } from '@/lib/utils';
@@ -22,7 +22,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
         <div className="flex items-start mb-4">
           <Link href="/patients" className="flex items-center text-sm text-slate-500 hover:text-slate-900 transition-colors">
-            <ChevronLeft className="w-4 h-4 mr-1" />
+            <IcChevronLeft className="w-4 h-4 mr-1" />
             Back to Directory
           </Link>
         </div>
@@ -40,33 +40,33 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                 </Badge>
                 {patient.consentGranted && (
                   <Badge variant="success" className="bg-success-100 text-success-800 hover:bg-success-100 flex gap-1 items-center">
-                    <ShieldCheck className="w-3 h-3" /> Consent Granted
+                    <IcShieldCheck className="h-4 w-4" /> Consent Granted
                   </Badge>
                 )}
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600 mt-2">
-                <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-slate-400" /> {patient.dateOfBirth}</span>
+                <span className="flex items-center gap-1.5"><IcClock className="w-4 h-4 text-slate-400" /> {patient.dateOfBirth}</span>
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
                 <span>{patient.gender}</span>
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
                 <Badge variant="outline" className="text-xs text-danger-600 border-danger-200 bg-danger-50">Blood: O+</Badge>
                 <span className="flex items-center gap-1.5 text-slate-400">•</span>
-                <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-slate-400" /> {patient.subCounty}, {patient.county}</span>
+                <span className="flex items-center gap-1.5"><IcMapPin className="w-4 h-4 text-slate-400" /> {patient.subCounty}, {patient.county}</span>
               </div>
             </div>
           </div>
           
           <div className="flex flex-wrap gap-3">
             <Button variant="outline" className="bg-slate-50">
-              <QrCode className="w-4 h-4 mr-2" />
+              <IcQr className="w-4 h-4 mr-2" />
               View QR Card
             </Button>
             <Button variant="outline">
-              <ArrowLeftRight className="w-4 h-4 mr-2" />
+              <IcArrowLeftRight className="w-4 h-4 mr-2" />
               Create Referral
             </Button>
             <Button className="bg-afya-600 hover:bg-afya-700 text-white shadow-sm">
-              <Plus className="w-4 h-4 mr-2" />
+              <IcPlus className="w-4 h-4 mr-2" />
               New Encounter
             </Button>
           </div>
@@ -95,7 +95,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                 <CardHeader className="pb-3 border-b border-slate-100">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-base font-medium flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-afya-600" />
+                      <IcMapPin className="w-4 h-4 text-afya-600" />
                       Cross-Facility Journey
                     </CardTitle>
                     <Badge variant="outline" className="text-xs bg-slate-50">Data Continuity Active</Badge>
@@ -106,7 +106,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
                     {patientEncounters.slice(0, 3).map((enc: ClinicalEncounter, idx: number) => (
                       <div key={idx} className="relative">
                         <div className="absolute -left-[33px] p-1 bg-white border-2 border-afya-600 rounded-full">
-                          <Stethoscope className="w-3 h-3 text-afya-600" />
+                          <IcStethoscope className="h-4 w-4 text-afya-600" />
                         </div>
                         <div className="bg-slate-50 border border-slate-100 rounded-lg p-4">
                           <div className="flex justify-between items-start mb-2">
@@ -130,7 +130,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
               <Card>
                 <CardHeader className="pb-3 border-b border-slate-100">
                   <CardTitle className="text-base font-medium flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-rose-500" />
+                    <IcActivity className="w-4 h-4 text-rose-500" />
                     Latest Vitals
                   </CardTitle>
                 </CardHeader>
@@ -157,7 +157,7 @@ export default async function PatientProfilePage({ params }: { params: Promise<{
               <Card>
                 <CardHeader className="pb-3 border-b border-slate-100">
                   <CardTitle className="text-base font-medium flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-warning-500" />
+                    <IcAlert className="w-4 h-4 text-warning-500" />
                     Active Allergies
                   </CardTitle>
                 </CardHeader>

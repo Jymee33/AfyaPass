@@ -3,16 +3,16 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/Card';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/Table';
-import { Check, X, Shield, Users, Building, Activity, FileKey } from 'lucide-react';
+import { IcCheck, IcX, IcShield, IcUsers, IcBuilding, IcActivity, IcFileKey } from '@/components/icons';
 import { Badge } from '@/components/ui/Badge';
 
 export default function RolesPermissionsPage() {
   const roles = [
-    { id: 'patient', name: 'Patient', icon: <Users className="w-4 h-4 text-slate-500" /> },
-    { id: 'healthcare_worker', name: 'Healthcare Worker', icon: <Activity className="w-4 h-4 text-info-500" /> },
-    { id: 'facility_admin', name: 'Facility Admin', icon: <Building className="w-4 h-4 text-indigo-500" /> },
-    { id: 'county_admin', name: 'County Admin', icon: <Shield className="w-4 h-4 text-purple-500" /> },
-    { id: 'system_auditor', name: 'System Auditor', icon: <FileKey className="w-4 h-4 text-danger-500" /> },
+    { id: 'patient', name: 'Patient', icon: <IcUsers className="w-4 h-4 text-slate-500" /> },
+    { id: 'healthcare_worker', name: 'Healthcare Worker', icon: <IcActivity className="w-4 h-4 text-info-500" /> },
+    { id: 'facility_admin', name: 'Facility Admin', icon: <IcBuilding className="w-4 h-4 text-indigo-500" /> },
+    { id: 'county_admin', name: 'County Admin', icon: <IcShield className="w-4 h-4 text-purple-500" /> },
+    { id: 'system_auditor', name: 'System Auditor', icon: <IcFileKey className="w-4 h-4 text-danger-500" /> },
   ];
 
   const permissions = [
@@ -101,9 +101,9 @@ export default function RolesPermissionsPage() {
                   {roles.map(role => (
                     <TableCell key={`${role.id}-${perm.key}`} className="text-center align-middle">
                       {matrix[role.id][perm.key] ? (
-                        <Check className="w-5 h-5 text-success-500 mx-auto" />
+                        <IcCheck className="w-5 h-5 text-success-500 mx-auto" />
                       ) : (
-                        <X className="w-5 h-5 text-slate-300 mx-auto" />
+                        <IcX className="w-5 h-5 text-slate-300 mx-auto" />
                       )}
                     </TableCell>
                   ))}

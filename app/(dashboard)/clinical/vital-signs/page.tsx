@@ -6,7 +6,7 @@ import { Table } from '@/components/ui/Table';
 import { Button } from '@/components/ui/Button';
 import { SearchInput } from '@/components/ui/SearchInput';
 import { Select } from '@/components/ui/Select';
-import { Plus, Activity, Heart, Thermometer, Wind } from 'lucide-react';
+import { IcPlus, IcActivity, IcHeart, IcThermometer, IcWind } from '@/components/icons';
 import { mockVitalSigns } from '@/lib/mock-data';
 
 export default function VitalSignsPage() {
@@ -18,7 +18,7 @@ export default function VitalSignsPage() {
           <p className="text-sm text-slate-500 mt-1">Track patient vitals and clinical measurements</p>
         </div>
         <Button>
-          <Plus className="w-4 h-4 mr-2" />
+          <IcPlus className="w-4 h-4 mr-2" />
           Record Vitals
         </Button>
       </div>
@@ -73,7 +73,7 @@ export default function VitalSignsPage() {
                     <td className="py-3 px-4">
                       {vital.bloodPressureSystolic && vital.bloodPressureDiastolic ? (
                         <div className={`flex items-center gap-1.5 text-sm font-medium ${isHighBP ? 'text-danger-600' : 'text-slate-900'}`}>
-                          <Activity className="w-4 h-4" />
+                          <IcActivity className="w-4 h-4" />
                           {vital.bloodPressureSystolic}/{vital.bloodPressureDiastolic} mmHg
                         </div>
                       ) : (
@@ -83,7 +83,7 @@ export default function VitalSignsPage() {
                     <td className="py-3 px-4">
                       {vital.heartRate ? (
                         <div className="flex items-center gap-1.5 text-sm font-medium text-slate-900">
-                          <Heart className="w-4 h-4 text-rose-500" />
+                          <IcHeart className="w-4 h-4 text-rose-500" />
                           {vital.heartRate} bpm
                         </div>
                       ) : (
@@ -93,7 +93,7 @@ export default function VitalSignsPage() {
                     <td className="py-3 px-4">
                       {vital.temperature ? (
                         <div className="flex items-center gap-1.5 text-sm font-medium text-slate-900">
-                          <Thermometer className="w-4 h-4 text-orange-500" />
+                          <IcThermometer className="w-4 h-4 text-orange-500" />
                           {vital.temperature} °C
                         </div>
                       ) : (
@@ -103,7 +103,7 @@ export default function VitalSignsPage() {
                     <td className="py-3 px-4">
                       {vital.oxygenSaturation ? (
                         <div className="flex items-center gap-1.5 text-sm font-medium text-slate-900">
-                          <Wind className="w-4 h-4 text-info-500" />
+                          <IcWind className="w-4 h-4 text-info-500" />
                           {vital.oxygenSaturation} %
                         </div>
                       ) : (

@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Table } from '@/components/ui/Table';
 import { QrCardPreview } from '@/components/QrCardPreview';
-import { ShieldAlert, Printer, RefreshCw, XCircle, FilePlus } from 'lucide-react';
+import { IcShieldAlert, IcPrint, IcRefresh, IcXCircle, IcFilePlus } from '@/components/icons';
 import { mockPatients } from '@/lib/mock-data';
 
 // MOCK DATA — Replace with Supabase query when backend integration is implemented
@@ -46,13 +46,13 @@ export default function AfyaPassCardPage() {
           <p className="text-sm text-slate-500 mt-1">Manage physical and digital AfyaPass cards for patients</p>
         </div>
         <Button>
-          <FilePlus className="w-4 h-4 mr-2" />
+          <IcFilePlus className="w-4 h-4 mr-2" />
           Issue New Card
         </Button>
       </div>
 
       <div className="bg-warning-50 border border-warning-200 rounded-lg p-4 flex items-start gap-3">
-        <ShieldAlert className="w-5 h-5 text-warning-600 mt-0.5 flex-shrink-0" />
+        <IcShieldAlert className="w-5 h-5 text-warning-600 mt-0.5 flex-shrink-0" />
         <div>
           <h3 className="text-sm font-medium text-warning-800">CRITICAL SECURITY PROTOCOL</h3>
           <p className="text-sm text-warning-700 mt-1">
@@ -103,19 +103,19 @@ export default function AfyaPassCardPage() {
             <h2 className="text-lg font-medium text-slate-900 mb-4">Quick Actions</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Button variant="outline" className="justify-start">
-                <Printer className="w-4 h-4 mr-2" />
+                <IcPrint className="w-4 h-4 mr-2" />
                 Print Physical Card
               </Button>
               <Button variant="outline" className="justify-start">
-                <RefreshCw className="w-4 h-4 mr-2" />
+                <IcRefresh className="w-4 h-4 mr-2" />
                 Generate QR Token
               </Button>
               <Button variant="outline" className="justify-start text-warning-600 hover:text-warning-700 hover:bg-warning-50">
-                <RefreshCw className="w-4 h-4 mr-2" />
+                <IcRefresh className="w-4 h-4 mr-2" />
                 Replace Lost Card
               </Button>
               <Button variant="outline" className="justify-start text-danger-600 hover:text-danger-700 hover:bg-danger-50">
-                <XCircle className="w-4 h-4 mr-2" />
+                <IcXCircle className="w-4 h-4 mr-2" />
                 Revoke Card
               </Button>
             </div>
