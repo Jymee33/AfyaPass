@@ -2,196 +2,264 @@
 
 > **Your Health. Wherever You Go.**
 
-AfyaPass is a digital, portable patient health-record platform designed to connect healthcare facilities and follow patients wherever they seek care.
+AfyaPass is a portable digital health-record platform. A patient's record is meant to follow them across participating facilities, instead of sitting in a single clinic's filing cabinet or isolated database.
+
+The first implementation target and pilot is **Murang'a County, Kenya**. That geography is the initial deployment, not an architectural limit. The same model is intended to work across public, private, and faith-based facilities elsewhere.
+
+This repository is an engineering prototype. Dashboard screens are mock UI backed by local sample data. They are not a production EHR and must not be used with real patient information.
 
 ---
 
-## Vision
-
-In many healthcare systems, patient medical histories remain fragmented across individual clinic filing cabinets or isolated facility databases. When a patient visits a new clinic, referral facility, or emergency room, clinicians often lack critical context such as past diagnoses, drug allergies, immunizations, or previous treatment plans.
-
-**AfyaPass** solves this by establishing a portable digital record. A patient's health record securely follows the patient across participating public, private, and faith-based healthcare facilities.
-
----
-
-## Initial Target
-
-The initial implementation target and pilot deployment is **Murang'a County, Kenya**.
-
-The pilot connects Level 1 through Level 5 healthcare facilities across Murang'a County sub-counties (such as Kiharu, Kandara, Maragua, and Gatanga) to validate cross-facility data continuity, clinical workflow integration, and patient consent models in primary healthcare settings.
-
----
-
-## Core Concept
+## Core workflow
 
 ```text
 Patient
-   ↓
+   |
 AfyaPass Patient ID
-   ↓
+   |
 QR Card
-   ↓
+   |
 Authorized Facility
-   ↓
+   |
+Consent / Authorization
+   |
 Portable Health Record
 ```
 
-1. **Patient Registration**: The patient is assigned a unique, internal **AfyaPass Patient ID** (e.g. `AFY-KE-MUR-2026-98421`).
-2. **Physical AfyaPass Card**: The patient receives a laminated physical card featuring their AfyaPass ID and an opaque QR code reference.
-3. **Facility Interaction**: Upon presenting the card at an authorized healthcare facility, a verified clinician scans the QR code or looks up the AfyaPass ID.
-4. **Consent & Verification**: The system verifies clinician credentials and patient consent status before displaying clinical history.
-5. **Continuous Record Update**: Encounters, vital signs, diagnoses (ICD-11), prescriptions, and lab referrals are recorded to follow the patient to their next visit.
+1. **Patient registration.** The patient is assigned an internal AfyaPass Patient ID.
+2. **Physical card.** The patient receives a card with that ID and an opaque QR reference.
+3. **Facility visit.** An authorized clinician scans the QR code or looks up the AfyaPass ID.
+4. **Consent.** Credentials and patient consent are checked before clinical history is shown.
+5. **Continuity.** Encounters, vitals, diagnoses, medications, and lab results are recorded so the next facility has context.
+
+QR codes carry an opaque identifier only. They do not encode diagnoses, medications, lab results, or other medical data.
 
 ---
 
-## Planned Modules
+## Current application areas
 
-- [x] **Scaffolding & Architecture Shell**: Initial application foundation, UI layout, database schema templates.
-- [ ] **Patient Registration & Identity Management**: Issuance and hash-verification of internal AfyaPass IDs.
-- [ ] **QR Code Verification & Scanning**: Mobile/web camera scanner for instant facility lookup.
-- [ ] **Patient Portal**: Patient self-service view for tracking visit history and managing data access consent.
-- [ ] **Healthcare Worker Portal**: Clinical desk interface for recording encounters, vital signs, and prescriptions.
-- [ ] **Facility Administration**: Management of MFL (Master Facility List) registered sites and staff roles.
-- [ ] **County Health Analytics**: De-identified epidemiological metrics and facility workload reporting for Murang'a County.
-- [ ] **Consent & Authorization Engine**: Patient-driven data sharing and emergency override controls.
-- [ ] **Immutable Audit Trail**: Log of all record views, QR scans, and emergency overrides.
-- [ ] **Interoperability API**: Integration hooks for HL7 FHIR and Kenya Health Information Exchange (KHIE) standards.
+Two surfaces exist today.
 
----
+### Public marketing (`app/(public)`)
 
-## Technology Stack
+| Route | Purpose |
+| --- | --- |
+| `/` | Landing page and product overview |
+| `/patient` | Patient-facing concept page |
+| `/facility` | Facility-facing concept page |
+| `/county` | County analytics concept page |
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Backend & Database**: [Supabase](https://supabase.com/) (PostgreSQL + Row Level Security + Auth)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Code Quality**: ESLint + Prettier
+These pages explain the product. They are not authenticated portals.
 
----
+### Dashboard EHR mock (`app/(dashboard)`)
 
-## Development Setup
+These screens demonstrate clinical and admin workflows. They use mock data (`lib/mock-data.ts`). They are **not** wired to Supabase. Writes are largely inert. There is no login screen or session gate.
 
-### Prerequisites
-
-- **Node.js**: v18.17+ or v20+ / v22+
-- **npm**: v9+ or v10+
-
-### Installation Steps
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Jymee33/AfyaPass.git
-   cd AfyaPass
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment Variables**:
-   Copy `.env.example` to `.env.local`:
-   ```bash
-   cp .env.example .env.local
-   ```
-   Fill in your Supabase project credentials in `.env.local`:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-   ```
-
-4. **Run Local Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-5. **Linting and Type Checks**:
-   ```bash
-   npm run lint
-   npm run build
-   ```
+| Area | Routes |
+| --- | --- |
+| Dashboard | `/dashboard` |
+| Patient registry | `/patients`, `/patients/register`, `/patients/[id]` |
+| Encounters | `/clinical/encounters` |
+| Diagnoses | `/clinical/diagnoses` |
+| Vital signs | `/clinical/vital-signs` |
+| Medications | `/clinical/medications` |
+| Laboratory | `/laboratory`, `/laboratory/results` |
+| Referrals | `/referrals`, `/referrals/incoming`, `/referrals/outgoing` |
+| Facilities | `/facilities`, `/facilities/[id]` |
+| Card / QR | `/card` |
+| Privacy / consent | `/privacy/consent` |
+| Audit logs | `/privacy/audit-logs` |
+| Administration | `/administration/users`, `/administration/roles`, `/administration/settings` |
 
 ---
 
-## Environment Variables
+## Planned modules
 
-The project uses `.env.example` as a template for local development configuration:
+Status reflects what is actually in this repository, not the intended product.
 
-| Variable | Description | Exposure |
-| :--- | :--- | :--- |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase API URL | Public (Client + Server) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase Anonymous Client Key | Public (Client + Server) |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase Administrative Key | **SERVER ONLY** (Never expose to client) |
-| `SECURITY_ENCRYPTION_SECRET` | Encryption key for signed payloads | **SERVER ONLY** |
+| Module | Status |
+| --- | --- |
+| Application scaffolding and UI shells | Present (marketing pages + dashboard mock) |
+| Database schema, migrations, and RLS policy files | Present under `supabase/` |
+| Client and server Supabase helpers | Present under `lib/supabase/` |
+| RBAC permission map | Present in `lib/rbac.ts` (five roles; not enforced by auth) |
+| Patient identity and AfyaPass ID issuance | Planned (registration UI is mock) |
+| QR payload helper | Present in `lib/qr.ts`; live scan/verify is not implemented |
+| Consent and authorization engine | Planned (consent screen is mock) |
+| Immutable audit trail | Planned (audit-log screen is mock) |
+| Authenticated sessions | Planned (no login or middleware gate) |
+| Live clinical writes to Postgres | Planned (pages use mock data) |
+| County health analytics | Planned (`/county` is a concept page) |
+| FHIR / interchange | Planned |
+
+RBAC roles defined in code: `patient`, `healthcare_worker`, `facility_admin`, `county_admin`, `system_auditor`.
 
 ---
 
-## Project Structure
+## Technology stack
+
+Verified from `package.json`:
+
+- **Framework:** Next.js 15 (App Router)
+- **UI:** React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 3.4, with `clsx` and `tailwind-merge`
+- **Backend target:** Supabase (PostgreSQL, Row Level Security, Auth architecture)
+- **Icons:** UXWing, as filled inline SVGs in `components/icons` (the product icon system)
+- **Lint:** ESLint (`eslint-config-next`)
+
+Scripts: `dev`, `build`, `start`, `lint`. There is no separate typecheck or Prettier script.
+
+---
+
+## Design system
+
+AfyaPass uses a healthcare dashboard language of its own:
+
+- Brand teal (`#0d9488`) on a 4px spacing grid
+- Slate neutrals, white cards, dark sidebar (260px) and white header (64px) in the dashboard shell
+- Inter as the UI typeface
+- UXWing filled icons at 16 / 20 / 24 (`h-4` / `h-5` / `h-6`)
+- Semantic status colors (success, warning, danger, info)
+- Responsive layouts for clinic desks and smaller screens
+
+Visual direction is informed by modern healthcare dashboards. That is inspiration only, not an affiliation or a copy.
+
+Design work is phased:
+
+1. **Tokens and type** - implemented on an open PR, not yet on `main`
+2. **UXWing icon unification** - in progress; do not treat as complete
+3. **Shared shells** (`PageHeader`, `FilterBar`, `DataTable`, `StatusBadge`, `Alert`) - not started
+4. **Chrome polish** - not started
+5. **Screen-by-screen** - not started
+
+---
+
+## Project structure
 
 ```text
 AfyaPass/
-├── app/
-│   ├── layout.tsx                 # Root App Router layout with header & footer
-│   ├── page.tsx                   # Main landing page & vision overview
-│   ├── globals.css                # Tailwind directives & global utility classes
-│   ├── patient/
-│   │   └── page.tsx               # Patient Portal concept shell
-│   ├── facility/
-│   │   └── page.tsx               # Healthcare Facility Portal concept shell
-│   └── county/
-│       └── page.tsx               # County Analytics & Admin dashboard shell
-├── components/
-│   ├── Navbar.tsx                 # Navigation bar with portal switcher
-│   ├── Hero.tsx                   # Main branding banner with AfyaPass tagline
-│   ├── FeatureGrid.tsx            # Architecture & feature overview cards
-│   ├── PortalSelector.tsx         # Interactive view switcher (Patient / Facility / County)
-│   ├── QrCardPreview.tsx          # Mock physical AfyaPass QR Card component
-│   ├── SecurityNotice.tsx         # Security architecture & privacy disclosures
-│   └── Footer.tsx                 # Footer with pilot disclosures & copyright
-├── lib/
-│   ├── supabase/
-│   │   ├── client.ts              # Browser Supabase client builder
-│   │   └── server.ts              # Server Supabase client builder (with protection)
-│   ├── qr.ts                      # Secure non-identifying QR payload parser
-│   └── rbac.ts                    # Role-Based Access Control logic
-├── types/
-│   └── index.ts                   # TypeScript interfaces for Patients, Facilities, Encounters
-├── supabase/
-│   ├── migrations/
-│   │   └── 20260825000000_init_afyapass.sql # Database schema (PostgreSQL + RLS)
-│   └── rls_policies.sql           # Row Level Security policies script
-├── docs/
-│   ├── ARCHITECTURE.md            # System architecture & data flow
-│   ├── SECURITY.md                # Detailed security principles & privacy guidelines
-│   └── QR_SPECIFICATION.md        # QR payload reference specification
-├── .env.example                   # Environment variable template
-├── .gitignore                     # Git ignore rules for secrets and build artifacts
-├── README.md                      # Primary project documentation
-├── package.json                   # Project dependencies and npm scripts
-└── tsconfig.json                  # Strict TypeScript configuration
+|-- app/
+|   |-- (public)/              # /, /patient, /facility, /county
+|   |-- (dashboard)/           # EHR mock routes
+|   |-- globals.css
+|   `-- layout.tsx
+|-- components/
+|   |-- ui/                    # Shared primitives
+|   |-- dashboard/             # Sidebar, Header, and related chrome
+|   |-- icons/                 # UXWing icon catalog
+|   `-- ...                    # Marketing components (Hero, Navbar, Footer, ...)
+|-- lib/
+|   |-- supabase/              # Browser and server clients
+|   |-- mock-data.ts
+|   |-- qr.ts
+|   |-- rbac.ts
+|   `-- utils.ts
+|-- types/
+|-- supabase/
+|   |-- migrations/
+|   |-- full_schema.sql
+|   `-- rls_policies.sql
+|-- docs/
+|   |-- ARCHITECTURE.md
+|   |-- QR_SPECIFICATION.md
+|   |-- SECURITY.md
+|   |-- architecture/
+|   |-- database/
+|   `-- security/
+|-- scripts/
+|   `-- verify-database.ts
+|-- .env.example
+|-- LICENSE
+|-- README.md
+|-- package.json
+|-- eslint.config.mjs
+`-- tsconfig.json
 ```
 
----
-
-## Security Principles
-
-Because AfyaPass will eventually handle sensitive personal health information, strict security principles are built into the architecture from day one:
-
-1. **No Medical Information in QR Codes**: QR codes contain **ONLY** an opaque reference ID (`AFY-KE-MUR-...`) and an issuer signature. Medical data is never encoded inside QR images.
-2. **Zero Hardcoded Secrets**: Secrets and service keys are managed exclusively via environment variables and never committed to Git.
-3. **No Direct ID Access**: Knowing a patient's national ID, phone number, or name does **NOT** grant access to medical records.
-4. **Internal AfyaPass Patient ID**: The internal AfyaPass Patient ID serves as the application's sole record identifier.
-5. **Row Level Security (RLS)**: Access controls are enforced at the PostgreSQL database level.
-6. **Role-Based Access Control (RBAC)**: Five strict roles (Patient, Healthcare Worker, Facility Admin, County Admin, System Auditor).
-7. **Immutable Audit Trail**: Every lookup, QR scan, and clinical encounter generates an unalterable log entry.
+Deeper notes live in `docs/ARCHITECTURE.md`, `docs/QR_SPECIFICATION.md`, and `docs/SECURITY.md`.
 
 ---
 
-## Development Status
+## Development setup
 
-> [!CAUTION]
-> **Prototype Status Notice**
-> This repository represents the initial foundation and engineering prototype for the **AfyaPass** platform. It is **NOT** currently approved, certified, or intended for handling real patient data in production clinical settings. Independent legal, privacy, security, and data protection reviews (under the Kenya Data Protection Act 2019) are required prior to live pilot deployment.
+**Prerequisites:** Node.js 18 or later, and npm.
+
+```bash
+git clone https://github.com/Jymee33/AfyaPass.git
+cd AfyaPass
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Open http://localhost:3000.
+
+```bash
+npm run lint
+npm run build
+```
+
+The repo is private. Clone access requires permission from the authors.
+
+---
+
+## Environment variables
+
+From `.env.example`. Never commit real secrets.
+
+| Variable | Purpose | Exposure |
+| --- | --- | --- |
+| `NEXT_PUBLIC_APP_URL` | App origin (default `http://localhost:3000`) | Public |
+| `NEXT_PUBLIC_ENVIRONMENT` | Runtime label (default `development`) | Public |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase API URL | Public |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key | Public |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role | Server only |
+| `SECURITY_ENCRYPTION_SECRET` | Signing / encryption secret | Server only |
+
+---
+
+## Security principles
+
+These are architectural rules for the product. They are not a claim that production controls are live.
+
+1. **No medical data in QR codes.** The code holds an opaque reference, not clinical content.
+2. **No secrets in git.** Credentials live in environment variables.
+3. **Knowing a national ID, phone number, or name is not access.** The internal AfyaPass Patient ID is the record key.
+4. **Row Level Security** is the intended database enforcement layer.
+5. **Role-based access** is defined for five roles in `lib/rbac.ts`.
+6. **Auditability** is intended for lookups, scans, and emergency overrides.
+
+AfyaPass is designed with the Kenya Data Protection Act, 2019 in mind. That is not a legal certification, a DPIA, or approval to process real health data.
+
+---
+
+## Development status
+
+> **Prototype.** This repository is not approved, certified, or intended for real patient data. Independent legal, privacy, security, and data-protection review is required before any live pilot.
+
+| Work | Status |
+| --- | --- |
+| Marketing site and dashboard mock UI | On `main` |
+| Database schema / RLS files | On `main` |
+| Design tokens and type (Phase 1) | Implemented on an open PR; not merged to `main` |
+| UXWing icon unification (Phase 2) | In progress; incomplete |
+| Shared UI shells (Phase 3) | Not started |
+| Auth, live Supabase wiring, QR scan, tests, pilot | Not started |
+
+---
+
+## Contributors
+
+AfyaPass is currently developed by two developers:
+
+- [Jymee33](https://github.com/Jymee33)
+- [Ian Mwinga Nyambura](https://github.com/kingyepz-uopeople) (`kingyepz-uopeople`)
+
+---
+
+## License
+
+Proprietary. All rights reserved. See [LICENSE](LICENSE).
+
+Viewing this repository does not grant permission to copy, modify, distribute, or use the software commercially.
