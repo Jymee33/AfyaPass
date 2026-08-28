@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { IcQr, IcShieldCheck, IcStethoscope, IcArrowRight } from '@/components/icons';
+import { QrCardPreview } from '@/components/QrCardPreview';
 
 export function Hero() {
   return (
@@ -62,47 +63,14 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-sm p-6 bg-slate-800/90 rounded-2xl border border-slate-700 shadow-2xl backdrop-blur">
-              <div className="flex items-center justify-between border-b border-slate-700 pb-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-afya-600 flex items-center justify-center text-white font-bold text-sm">
-                    AP
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">AfyaPass Card</div>
-                    <div className="text-xs text-slate-400">Official Patient Identifier</div>
-                  </div>
-                </div>
-                <span className="text-xs px-2 py-1 bg-afya-500/20 text-afya-300 rounded font-mono">PILOT</span>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 text-slate-900 text-center shadow-inner space-y-3">
-                <div className="font-mono text-sm font-bold tracking-wider text-slate-700">
-                  AFY-KE-MUR-2026-98421
-                </div>
-                <div className="w-40 h-40 mx-auto bg-slate-950 p-2 rounded-lg flex items-center justify-center">
-                  <div className="grid grid-cols-5 gap-1.5 w-full h-full p-2 bg-white rounded">
-                    {Array.from({ length: 25 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className={`rounded-sm ${
-                          i % 2 === 0 || i % 7 === 0 ? 'bg-slate-900' : 'bg-afya-600'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[11px] text-slate-500 font-medium">
-                  Scan at any participating facility in Murang'a County
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-700 text-xs text-slate-400 flex items-center justify-between">
-                <span>Security Payload: Opaque Ref ID</span>
-                <span className="text-emerald-400 font-semibold">No Medical Data</span>
-              </div>
-            </div>
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <QrCardPreview
+              variant="hero"
+              patientName="Wanjiku Njuguna"
+              afyaPassId="AFY-KE-MUR-2026-98421"
+              county="Murang'a County"
+              facilityName="Murang'a Level 5"
+            />
           </div>
         </div>
       </div>

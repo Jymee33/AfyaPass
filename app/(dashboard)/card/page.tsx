@@ -63,11 +63,12 @@ export default function AfyaPassCardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1">
-          <Card className="p-6 h-full flex flex-col items-center justify-center bg-slate-50">
+          <Card className="p-8 h-full flex flex-col items-center justify-center bg-gradient-to-b from-slate-50 to-white border-border/60">
              <QrCardPreview 
                 patientName="Jane Doe" 
                 patientId="AFY-KE-MUR-8891" 
                 facilityName="Nairobi Hospital"
+                county="Murang'a County"
              />
           </Card>
         </div>

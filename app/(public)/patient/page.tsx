@@ -25,12 +25,18 @@ export default function PatientPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="text-lg font-bold text-slate-900">Digital AfyaPass Card</h2>
-            <QrCardPreview
-              patientName="Wanjiku Njuguna (Demo)"
-              afyaPassId="AFY-KE-MUR-2026-98421"
-              county="Murang'a County"
-            />
+            <div>
+              <h2 className="font-display text-xl font-bold text-slate-900">Digital AfyaPass Card</h2>
+              <p className="text-sm text-slate-500 mt-1">Your portable health identifier for Murang&apos;a County facilities</p>
+            </div>
+            <div className="flex justify-center lg:justify-start">
+              <QrCardPreview
+                patientName="Wanjiku Njuguna (Demo)"
+                afyaPassId="AFY-KE-MUR-2026-98421"
+                county="Murang'a County"
+                facilityName="Kiharu Sub-County"
+              />
+            </div>
             <div className="bg-white p-5 rounded-2xl border border-slate-200 space-y-3">
               <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
                 <IcLock className="w-4 h-4 text-afya-600" />
