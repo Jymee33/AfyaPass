@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -11,6 +10,7 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Brand scale is `afya-*` (e.g. afya-600). Do not invent afya-teal / afya-blue aliases.
         afya: {
           50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
           400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
@@ -26,7 +26,11 @@ const config: Config = {
         info: { 50: '#EFF6FF', 100: '#DBEAFE', 500: '#3B82F6', 600: '#2563EB', 700: '#1D4ED8', 800: '#1E40AF' }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif']
+      },
+      fontSize: {
+        'page-title': ['1.5rem', { lineHeight: '2rem', fontWeight: '600' }],
+        'kpi': ['1.75rem', { lineHeight: '2.25rem', fontWeight: '700' }],
       },
       borderRadius: {
         'card': '12px',
