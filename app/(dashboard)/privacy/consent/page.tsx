@@ -19,15 +19,15 @@ export default function ConsentManagementPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Patient Data Consent Management</h1>
-        <p className="text-sm text-gray-500 mt-1">Manage global read access and patient consent preferences</p>
+        <h1 className="text-2xl font-semibold text-slate-900">Patient Data Consent Management</h1>
+        <p className="text-sm text-slate-500 mt-1">Manage global read access and patient consent preferences</p>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-4 items-start">
-        <Shield className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
+      <div className="bg-info-50 border border-info-200 rounded-lg p-4 flex gap-4 items-start">
+        <Shield className="w-6 h-6 text-info-600 flex-shrink-0 mt-0.5" />
         <div>
-          <h3 className="font-medium text-blue-900">Security Architecture Notice</h3>
-          <p className="text-sm text-blue-800 mt-1">
+          <h3 className="font-medium text-info-800">Security Architecture Notice</h3>
+          <p className="text-sm text-info-800 mt-1">
             AfyaPass utilizes a patient-controlled consent framework. For the Murang'a County pilot, consent is <strong>opt-in by default</strong> for all registered facilities. Patients can revoke global read access at any time, restricting their records to their primary facility only. Emergency overrides are logged and audited.
           </p>
         </div>
@@ -59,14 +59,14 @@ export default function ConsentManagementPage() {
                         <TableRow key={patient.id}>
                           <TableCell>
                             <div className="font-medium">{patient.givenName} {patient.familyName}</div>
-                            <div className="text-xs text-gray-500">{patient.afyaPassId}</div>
+                            <div className="text-xs text-slate-500">{patient.afyaPassId}</div>
                           </TableCell>
                           <TableCell className="text-sm">{facility?.name}</TableCell>
                           <TableCell>
                             <button 
                               onClick={() => toggleConsent(patient.id)}
-                              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                                patient.consentGranted ? 'bg-green-500' : 'bg-gray-200'
+                              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-info-500 focus:ring-offset-2 ${
+                                patient.consentGranted ? 'bg-success-500' : 'bg-slate-200'
                               }`}
                             >
                               <span
@@ -127,10 +127,10 @@ export default function ConsentManagementPage() {
             </CardContent>
           </Card>
           
-          <Card className="border-amber-200 bg-amber-50">
+          <Card className="border-warning-200 bg-warning-50">
             <CardContent className="p-4 flex gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0" />
-              <div className="text-sm text-amber-800">
+              <AlertTriangle className="w-5 h-5 text-warning-600 flex-shrink-0" />
+              <div className="text-sm text-warning-800">
                 <strong>Important:</strong> Changes to consent policies take effect immediately across all connected KHIE nodes. Ensure patient understands implications before toggling access.
               </div>
             </CardContent>
