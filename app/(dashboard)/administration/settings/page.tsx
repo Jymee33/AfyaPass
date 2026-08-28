@@ -13,8 +13,8 @@ export default function SystemSettingsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">System Configuration</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage global system settings for the AfyaPass pilot environment</p>
+          <h1 className="text-2xl font-semibold text-slate-900">System Configuration</h1>
+          <p className="text-sm text-slate-500 mt-1">Manage global system settings for the AfyaPass pilot environment</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" className="flex items-center gap-2">
@@ -32,10 +32,10 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Settings className="w-5 h-5 text-blue-600" />
+                <Settings className="w-5 h-5 text-info-600" />
                 <CardTitle>Pilot Configuration</CardTitle>
               </div>
-              <Badge variant="outline" className="bg-blue-50 text-blue-700">Active</Badge>
+              <Badge variant="outline" className="bg-info-50 text-info-700">Active</Badge>
             </div>
             <CardDescription>Regional settings for the initial deployment phase</CardDescription>
           </CardHeader>
@@ -77,7 +77,7 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-red-600" />
+                <Shield className="w-5 h-5 text-danger-600" />
                 <CardTitle>Security & Encryption</CardTitle>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function SystemSettingsPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Network className="w-5 h-5 text-teal-600" />
+                <Network className="w-5 h-5 text-afya-600" />
                 <CardTitle>Interoperability</CardTitle>
               </div>
               <Badge variant="success">Connected</Badge>
@@ -183,7 +183,7 @@ export default function SystemSettingsPage() {
               />
             </div>
             <div className="pt-4 border-t border-slate-200">
-              <Button variant="outline" className="w-full text-red-600 border-red-200 hover:bg-red-50">
+              <Button variant="outline" className="w-full text-danger-600 border-danger-200 hover:bg-danger-50">
                 Purge Orphaned Records
               </Button>
             </div>
