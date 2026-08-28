@@ -17,8 +17,8 @@ export default function PatientPage() {
               Manage your AfyaPass Patient ID, inspect facility visit logs, and set data authorization preferences.
             </p>
           </div>
-          <div className="text-xs bg-amber-50 text-amber-800 p-3 rounded-lg border border-amber-200 flex items-center gap-2 max-w-sm">
-            <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+          <div className="text-xs bg-warning-50 text-warning-800 p-3 rounded-lg border border-warning-200 flex items-center gap-2 max-w-sm">
+            <AlertCircle className="w-4 h-4 text-warning-600 shrink-0" />
             <span>Demo Placeholder: Clearly marked mock data for application shell testing.</span>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function PatientPage() {
               </p>
               <div className="pt-2 flex items-center justify-between border-t border-slate-100 text-xs">
                 <span className="font-medium text-slate-700">Participating Facility Read Access:</span>
-                <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-bold rounded">ENABLED</span>
+                <span className="px-2 py-0.5 bg-success-100 text-success-800 font-bold rounded">ENABLED</span>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function PatientPage() {
                   </div>
                   <div className="text-right sm:text-right">
                     <div className="text-xs font-medium text-slate-600">2026-08-24 14:30 EAT</div>
-                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-medium border border-emerald-200 mt-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] text-success-700 bg-success-50 px-2 py-0.5 rounded font-medium border border-success-200 mt-1">
                       <ShieldCheck className="w-3 h-3" /> SUCCESS
                     </span>
                   </div>
@@ -84,7 +84,7 @@ export default function PatientPage() {
                   </div>
                   <div className="text-right sm:text-right">
                     <div className="text-xs font-medium text-slate-600">2026-08-18 09:15 EAT</div>
-                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-medium border border-emerald-200 mt-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] text-success-700 bg-success-50 px-2 py-0.5 rounded font-medium border border-success-200 mt-1">
                       <ShieldCheck className="w-3 h-3" /> SUCCESS
                     </span>
                   </div>
@@ -98,7 +98,7 @@ export default function PatientPage() {
                   </div>
                   <div className="text-right sm:text-right">
                     <div className="text-xs font-medium text-slate-600">2026-08-01 11:02 EAT</div>
-                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-medium border border-emerald-200 mt-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] text-success-700 bg-success-50 px-2 py-0.5 rounded font-medium border border-success-200 mt-1">
                       <ShieldCheck className="w-3 h-3" /> SUCCESS
                     </span>
                   </div>
