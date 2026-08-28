@@ -31,15 +31,15 @@ export default function OutgoingReferralsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Outgoing Patient Referrals</h1>
-        <p className="text-sm text-gray-500 mt-1">Track and manage patients referred from your facility</p>
+        <h1 className="text-2xl font-semibold text-slate-900">Outgoing Patient Referrals</h1>
+        <p className="text-sm text-slate-500 mt-1">Track and manage patients referred from your facility</p>
       </div>
 
       <Card>
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by patient name or ID..." 
                 className="pl-9"
@@ -91,7 +91,7 @@ export default function OutgoingReferralsPage() {
                     <TableCell className="font-mono text-xs">{referral.id}</TableCell>
                     <TableCell>
                       <div className="font-medium">{patient?.givenName} {patient?.familyName}</div>
-                      <div className="text-xs text-gray-500">{patient?.afyaPassId}</div>
+                      <div className="text-xs text-slate-500">{patient?.afyaPassId}</div>
                     </TableCell>
                     <TableCell>{target?.name}</TableCell>
                     <TableCell>
@@ -101,7 +101,7 @@ export default function OutgoingReferralsPage() {
                     </TableCell>
                     <TableCell>
                       <div className="text-sm">{new Date(referral.referralDate).toLocaleDateString()}</div>
-                      <div className="text-xs text-gray-500 truncate max-w-[200px]" title={referral.reason}>
+                      <div className="text-xs text-slate-500 truncate max-w-[200px]" title={referral.reason}>
                         {referral.reason}
                       </div>
                     </TableCell>
@@ -116,7 +116,7 @@ export default function OutgoingReferralsPage() {
                           <Navigation className="w-4 h-4 mr-1" /> Track Status
                         </Button>
                         {referral.status === 'Pending' && (
-                          <Button size="sm" variant="outline" className="text-red-600 border-red-200 hover:bg-red-50">
+                          <Button size="sm" variant="outline" className="text-danger-600 border-danger-200 hover:bg-danger-50">
                             <XCircle className="w-4 h-4 mr-1" /> Cancel
                           </Button>
                         )}
@@ -127,7 +127,7 @@ export default function OutgoingReferralsPage() {
               })}
               {filtered.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={7} className="text-center py-8 text-slate-500">
                     No outgoing referrals found matching your criteria.
                   </TableCell>
                 </TableRow>
