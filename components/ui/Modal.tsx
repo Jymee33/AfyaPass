@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { IcX } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 export interface ModalProps {
@@ -65,7 +65,7 @@ export function Modal({
             className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-afya-500"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5" />
+            <IcX className="w-5 h-5" />
           </button>
         </div>
         <div className="p-6 max-h-[calc(100vh-10rem)] overflow-y-auto">
