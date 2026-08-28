@@ -133,10 +133,10 @@ export default function FacilityProfilePage({ params }: { params: Promise<{ id: 
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {['Outpatient', 'Emergency', 'Pediatrics', 'Maternity', 'Lab', 'Pharmacy'].map((dept) => (
+                {['Outpatient', 'Emergency', 'Pediatrics', 'Maternity', 'Lab', 'Pharmacy'].map((dept, index) => (
                   <div key={dept} className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0">
                     <span className="text-slate-700 font-medium">{dept}</span>
-                    <Badge variant="outline">{Math.floor(Math.random() * 30) + 5} staff</Badge>
+                    <Badge variant="outline">{((index * 7 + 11) % 30) + 5} staff</Badge>
                   </div>
                 ))}
               </div>
