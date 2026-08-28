@@ -94,10 +94,10 @@ export default function AuditLogsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">System Audit Trail & Security Logs</h1>
-          <p className="text-sm text-gray-500 mt-1">Monitor system access, consent overrides, and security events</p>
+          <h1 className="text-2xl font-semibold text-slate-900">System Audit Trail & Security Logs</h1>
+          <p className="text-sm text-slate-500 mt-1">Monitor system access, consent overrides, and security events</p>
         </div>
-        <div className="flex items-center gap-2 bg-red-50 text-red-700 px-3 py-1.5 rounded-full text-sm font-medium border border-red-200">
+        <div className="flex items-center gap-2 bg-danger-50 text-danger-700 px-3 py-1.5 rounded-full text-sm font-medium border border-danger-200">
           <ShieldCheck className="w-4 h-4" />
           Restricted Access: System Auditors & County Administrators Only
         </div>
@@ -107,7 +107,7 @@ export default function AuditLogsPage() {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <Input 
                 placeholder="Search by actor or log ID..." 
                 className="pl-9"
@@ -197,7 +197,7 @@ export default function AuditLogsPage() {
                           {log.status}
                         </Badge>
                         {log.denialReason && (
-                          <span className="text-xs text-red-600 truncate max-w-[150px]" title={log.denialReason}>
+                          <span className="text-xs text-danger-600 truncate max-w-[150px]" title={log.denialReason}>
                             {log.denialReason}
                           </span>
                         )}
@@ -208,7 +208,7 @@ export default function AuditLogsPage() {
               })}
               {filteredLogs.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={6} className="text-center py-8 text-slate-500">
                     No audit logs found matching your criteria.
                   </TableCell>
                 </TableRow>
