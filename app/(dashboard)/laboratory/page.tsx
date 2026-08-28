@@ -16,8 +16,8 @@ export default function LabOrdersPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Laboratory Orders</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage and track laboratory test orders</p>
+          <h1 className="text-2xl font-semibold text-slate-900">Laboratory Orders</h1>
+          <p className="text-sm text-slate-500 mt-1">Manage and track laboratory test orders</p>
         </div>
         <Button>
           <Plus className="w-4 h-4 mr-2" />
@@ -29,22 +29,22 @@ export default function LabOrdersPage() {
         <StatCard
           title="Pending Orders"
           value="34"
-          icon={<TestTube className="w-5 h-5 text-gray-400" />}
+          icon={<TestTube className="w-5 h-5 text-slate-400" />}
         />
         <StatCard
           title="In Progress"
           value="14"
-          icon={<Clock className="w-5 h-5 text-blue-500" />}
+          icon={<Clock className="w-5 h-5 text-info-500" />}
         />
         <StatCard
           title="Completed Today"
           value="28"
-          icon={<CheckCircle2 className="w-5 h-5 text-green-500" />}
+          icon={<CheckCircle2 className="w-5 h-5 text-success-500" />}
         />
         <StatCard
           title="Urgent STAT"
           value="3"
-          icon={<AlertTriangle className="w-5 h-5 text-amber-500" />}
+          icon={<AlertTriangle className="w-5 h-5 text-warning-500" />}
         />
       </div>
 
@@ -85,28 +85,28 @@ export default function LabOrdersPage() {
           <Table>
             <thead>
               <tr>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Order ID</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Test Name & Code</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Priority</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Patient</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Ordering Provider</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Order Date</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-gray-500">Status</th>
-                <th className="text-right py-3 px-4 font-medium text-sm text-gray-500">Actions</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Order ID</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Test Name & Code</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Priority</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Patient</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Ordering Provider</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Order Date</th>
+                <th className="text-left py-3 px-4 font-medium text-sm text-slate-500">Status</th>
+                <th className="text-right py-3 px-4 font-medium text-sm text-slate-500">Actions</th>
               </tr>
             </thead>
             <tbody>
               {/* MOCK DATA — Replace with Supabase query when backend integration is implemented */}
               {mockLabOrders.map((order) => (
-                <tr key={order.id} className="border-t border-gray-100 hover:bg-gray-50">
+                <tr key={order.id} className="border-t border-slate-100 hover:bg-slate-50">
                   <td className="py-3 px-4">
-                    <span className="font-mono text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">
+                    <span className="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded">
                       {order.id.substring(0,8)}
                     </span>
                   </td>
                   <td className="py-3 px-4">
-                    <div className="font-medium text-sm text-gray-900">{order.testName}</div>
-                    <div className="text-xs text-gray-500">{order.testCode}</div>
+                    <div className="font-medium text-sm text-slate-900">{order.testName}</div>
+                    <div className="text-xs text-slate-500">{order.testCode}</div>
                   </td>
                   <td className="py-3 px-4">
                     <Badge variant={
@@ -116,14 +116,14 @@ export default function LabOrdersPage() {
                       {order.priority}
                     </Badge>
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-900">
+                  <td className="py-3 px-4 text-sm text-slate-900">
                     {order.patientId.substring(0,8)}...
                   </td>
                   <td className="py-3 px-4">
-                    <div className="text-sm text-gray-900">Dr. {order.orderedBy.substring(0,6)}...</div>
-                    <div className="text-xs text-gray-500">{order.facilityId}</div>
+                    <div className="text-sm text-slate-900">Dr. {order.orderedBy.substring(0,6)}...</div>
+                    <div className="text-xs text-slate-500">{order.facilityId}</div>
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-600 whitespace-nowrap">
+                  <td className="py-3 px-4 text-sm text-slate-600 whitespace-nowrap">
                     {new Date(order.orderedAt).toLocaleString()}
                   </td>
                   <td className="py-3 px-4">
@@ -136,7 +136,7 @@ export default function LabOrdersPage() {
                   </td>
                   <td className="py-3 px-4 text-sm text-right">
                     {order.status === 'Pending' || order.status === 'In Progress' ? (
-                      <Button variant="ghost" size="sm" className="text-afya-teal hover:text-afya-teal-dark hover:bg-afya-teal-50">
+                      <Button variant="ghost" size="sm" className="text-afya-600 hover:text-afya-700 hover:bg-afya-50">
                         Enter Results
                       </Button>
                     ) : (
