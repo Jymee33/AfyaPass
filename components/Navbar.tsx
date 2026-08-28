@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { AfyaPassLogo } from '@/components/AfyaPassBrand';
+import { AfyaPassLogo, AFYA_TEAL, AFYA_NAVY } from '@/components/AfyaPassBrand';
 import { IcUser, IcBuilding, IcBarChart, IcShield } from '@/components/icons';
 
 export function Navbar() {
@@ -39,7 +39,7 @@ export function Navbar() {
           <Link
             href="/facility"
             className="px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all shadow-md hover:shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #00B5AD, #0D2B55)' }}
+            style={{ background: `linear-gradient(135deg, ${AFYA_TEAL}, ${AFYA_NAVY})` }}
           >
             Access Portal
           </Link>

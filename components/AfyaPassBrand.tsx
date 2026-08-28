@@ -2,30 +2,32 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-/* Brand colours extracted from official AfyaPass logo */
-export const AFYA_TEAL = '#00B5AD';
-export const AFYA_NAVY = '#0D2B55';
+export const AFYA_TEAL = '#00A9A4';
+export const AFYA_NAVY = '#002D4F';
+
+const LOGO = '/images/afyapass-logo.png';
 
 interface LogoMarkProps {
   className?: string;
   size?: number;
 }
 
-/** Cropped emblem from the official logo artwork */
-export function AfyaPassLogoMark({ className, size = 40 }: LogoMarkProps) {
+/** Icon-only crop from official PNG logo */
+export function AfyaPassLogoMark({ className, size = 44 }: LogoMarkProps) {
   return (
     <div
       className={cn('relative overflow-hidden shrink-0', className)}
       style={{ width: size, height: size }}
     >
       <Image
-        src="/images/afyapass-logo.jpg"
+        src={LOGO}
         alt=""
-        width={size * 2.4}
-        height={size * 5}
-        className="absolute left-1/2 -translate-x-1/2 top-0 object-cover object-top"
-        style={{ width: size * 2.4, height: size * 5 }}
+        width={Math.round(size * 1.2)}
+        height={Math.round(size * 3.2)}
+        className="absolute left-1/2 -translate-x-1/2 top-0 h-auto max-w-none select-none"
+        style={{ width: Math.round(size * 1.15) }}
         aria-hidden
+        draggable={false}
       />
     </div>
   );
@@ -34,44 +36,41 @@ export function AfyaPassLogoMark({ className, size = 40 }: LogoMarkProps) {
 interface WordmarkProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg';
-  /** Use on dark backgrounds */
   onDark?: boolean;
 }
 
-/** "Afya" teal + "Pass" navy — matches physical card header */
 export function AfyaPassWordmark({ className, size = 'md', onDark = false }: WordmarkProps) {
-  const sizes = {
-    sm: 'text-base',
-    md: 'text-[22px]',
-    lg: 'text-[28px]',
-  };
+  const sizes = { sm: 'text-[17px]', md: 'text-[22px]', lg: 'text-[26px]' };
   return (
     <span className={cn('font-display font-extrabold tracking-tight leading-none', sizes[size], className)}>
       <span style={{ color: onDark ? '#5EEAD4' : AFYA_TEAL }}>Afya</span>
-      <span style={{ color: onDark ? '#FFFFFF' : AFYA_NAVY }}>Pass</span>
+      <span style={{ color: onDark ? '#fff' : AFYA_NAVY }}>Pass</span>
     </span>
   );
 }
 
 interface AfyaPassLogoProps {
-  variant?: 'full' | 'compact' | 'wordmark';
+  variant?: 'full' | 'compact' | 'wordmark' | 'icon';
   className?: string;
   markSize?: number;
 }
 
-/** Navbar / sidebar logo lockup */
-export function AfyaPassLogo({ variant = 'compact', className, markSize = 36 }: AfyaPassLogoProps) {
+export function AfyaPassLogo({ variant = 'compact', className, markSize = 38 }: AfyaPassLogoProps) {
   if (variant === 'full') {
     return (
       <Image
-        src="/images/afyapass-logo.jpg"
+        src={LOGO}
         alt="AfyaPass — One Patient. One Record. Any Health Center."
-        width={220}
-        height={160}
-        className={cn('h-auto w-[200px] object-contain', className)}
+        width={240}
+        height={280}
+        className={cn('h-auto w-[180px] object-contain', className)}
         priority
       />
     );
+  }
+
+  if (variant === 'icon') {
+    return <AfyaPassLogoMark size={markSize} className={className} />;
   }
 
   if (variant === 'wordmark') {
@@ -79,32 +78,31 @@ export function AfyaPassLogo({ variant = 'compact', className, markSize = 36 }: 
   }
 
   return (
-    <div className={cn('flex items-center gap-2.5', className)}>
+    <div className={cn('flex items-center gap-2', className)}>
       <AfyaPassLogoMark size={markSize} />
       <AfyaPassWordmark size="md" />
     </div>
   );
 }
 
-/** Large watermark emblem for card background */
+/** Large centred watermark on card body */
 export function AfyaPassWatermark({ className }: { className?: string }) {
   return (
-    <div className={cn('pointer-events-none select-none', className)}>
-      <AfyaPassLogoMark size={140} className="opacity-[0.18]" />
+    <div className={cn('pointer-events-none select-none flex items-center justify-center', className)}>
+      <AfyaPassLogoMark size={150} className="opacity-[0.22]" />
     </div>
   );
 }
 
-/** Emblem for QR code centre */
+/** Logo inside QR code centre */
 export function AfyaPassQrLogo({ className }: { className?: string }) {
   return (
-    <div className={cn('bg-white rounded-md p-0.5 shadow-sm', className)}>
-      <AfyaPassLogoMark size={28} />
+    <div className={cn('bg-white rounded p-[2px] shadow-sm ring-1 ring-slate-100', className)}>
+      <AfyaPassLogoMark size={30} />
     </div>
   );
 }
 
-// Legacy export kept for compatibility
 export function AfyaPassEmblem({ className, variant }: { className?: string; variant?: 'full' | 'compact' }) {
-  return <AfyaPassLogoMark className={className} size={variant === 'compact' ? 28 : 120} />;
+  return <AfyaPassLogoMark className={className} size={variant === 'compact' ? 30 : 120} />;
 }
